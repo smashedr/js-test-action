@@ -6,11 +6,9 @@ inputs:
   chrome:
     description: 'Chrome Archive Location'
     required: false
-    default: ''
   firefox:
     description: 'Firefox Archive Location'
     required: false
-#    default:
 
 #outputs:
 #  time:
