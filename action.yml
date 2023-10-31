@@ -1,13 +1,21 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
+author: 'Shane'
+
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  chrome:
+    description: 'Chrome Archive Location'
+    required: false
+    default: false
+  firefox:
+    description: 'Firefox Archive Location'
+    required: false
+    default: false
+
+#outputs:
+#  time:
+#    description: 'The time we greeted you'
+
 runs:
   using: 'node20'
   main: 'dist/index.js'

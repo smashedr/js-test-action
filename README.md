@@ -1,23 +1,37 @@
-# Hello world javascript action
+# JS Test Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action should never be used under any circumstances, be it life, death, or npm...
 
 ## Inputs
 
-### `who-to-greet`
-
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
+| input    | description               |
+|----------|---------------------------|
+| chrome:  | Remote Docker host        |
+| firefox: | Remote Docker username    |
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
-with:
-  who-to-greet: 'Mona the Octocat'
+name: "Test JS Test"
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  test:
+    name: "Test"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Test JS"
+        uses: smashedr/js-test-action@master
+        with:
+          chrome: 'build/chrome.zip'
+          firefox: 'build/firefox.zip'
 ```
