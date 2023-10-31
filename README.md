@@ -2,6 +2,8 @@
 
 This action should never be used under any circumstances, be it life, death, or npm...
 
+https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
+
 ## Inputs
 
 | input    | description               |
@@ -31,7 +33,14 @@ jobs:
 
       - name: "Test JS"
         uses: smashedr/js-test-action@master
+        env:
+          WEXT_SHIPIT_CHROME_EXTENSION_ID: ""
+          WEXT_SHIPIT_CHROME_CLIENT_ID: ""
+          WEXT_SHIPIT_CHROME_CLIENT_SECRET: ""
+          WEXT_SHIPIT_CHROME_REFRESH_TOKEN: ""
+          WEXT_SHIPIT_FIREFOX_JWT_ISSUER: ""
+          WEXT_SHIPIT_FIREFOX_JWT_SECRET: ""
         with:
-          chrome: 'build/chrome.zip'
-          firefox: 'build/firefox.zip'
+          chrome: "build/chrome.zip"
+          firefox: "build/firefox.zip"
 ```
