@@ -30134,11 +30134,11 @@ try {
     const chromeFile = core.getInput('chrome')
     const firefoxFile = core.getInput('firefox')
 
-    console.log(`chromeFile ${chromeFile}!`)
+    console.log(`chromeFile: ${chromeFile}!`)
     if (chromeFile) {
         console.log('chromeFile is TRUE')
     }
-    console.log(`firefoxFile ${firefoxFile}!`)
+    console.log(`firefoxFile: ${firefoxFile}!`)
     if (firefoxFile) {
         console.log('firefoxFile is TRUE')
     }
