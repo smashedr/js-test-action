@@ -22,8 +22,10 @@ const { parse } = require('csv-parse/sync')
         console.log('images:', images)
         const extra = core.getInput('extra')
         console.log('extra:', extra)
-        const seperator = core.getInput('seperator') || `\n`
+        const seperator =
+            core.getInput('seperator', { trimWhitespace: false }) || `\n`
         console.log('seperator:', seperator)
+        console.log('seperator:', JSON.stringify(seperator))
         const latest = core.getInput('latest')
         console.log('latest:', latest)
         const prefix = core.getInput('prefix')
