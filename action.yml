@@ -1,19 +1,31 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Docker Tags Test Action'
+description: 'Parse Docker Tags'
 author: 'Shane'
+branding:
+    icon: 'tag'
+    color: 'blue'
 
 inputs:
-  chrome:
-    description: 'Chrome Archive Location'
-    required: false
-  firefox:
-    description: 'Firefox Archive Location'
-    required: false
+    image:
+        description: 'Image Name'
+        required: true
+    extra:
+        description: 'Extra Tags'
+        required: false
+        default: ''
+    prefix:
+        description: 'Semantic Tag Prefix'
+        required: false
+        default: ''
+    seperator:
+        description: 'Tags Output Seperator'
+        required: false
+        default: '\n'
 
-#outputs:
-#  time:
-#    description: 'The time we greeted you'
+outputs:
+    tags:
+        description: 'Generated Docker tags'
 
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+    using: 'node20'
+    main: 'src/index.js'
