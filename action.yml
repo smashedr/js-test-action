@@ -12,11 +12,9 @@ inputs:
     extra:
         description: 'Extra Tags to Add'
         required: false
-        default: ''
     seperator:
         description: 'Tags Output Seperator'
         required: false
-        default: '\n'
     latest:
         description: 'Add latest Tag'
         required: false
@@ -24,7 +22,6 @@ inputs:
     prefix:
         description: 'Semantic Tag Prefix'
         required: false
-        default: ''
 
 outputs:
     tags:

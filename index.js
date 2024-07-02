@@ -22,7 +22,7 @@ const { parse } = require('csv-parse/sync')
         console.log('images:', images)
         const extra = core.getInput('extra')
         console.log('extra:', extra)
-        const seperator = core.getInput('seperator')
+        const seperator = core.getInput('seperator') || `\n`
         console.log('seperator:', seperator)
         const latest = core.getInput('latest')
         console.log('latest:', latest)
