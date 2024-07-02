@@ -6,21 +6,25 @@ branding:
     color: 'blue'
 
 inputs:
-    image:
-        description: 'Image Name'
+    images:
+        description: 'Image Names to Tag'
         required: true
     extra:
-        description: 'Extra Tags'
-        required: false
-        default: ''
-    prefix:
-        description: 'Semantic Tag Prefix'
+        description: 'Extra Tags to Add'
         required: false
         default: ''
     seperator:
         description: 'Tags Output Seperator'
         required: false
         default: '\n'
+    latest:
+        description: 'Add latest Tag'
+        required: false
+        default: 'default'
+    prefix:
+        description: 'Semantic Tag Prefix'
+        required: false
+        default: ''
 
 outputs:
     tags:
