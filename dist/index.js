@@ -34016,7 +34016,7 @@ const { parse } = __nccwpck_require__(7657)
 
 ;(async () => {
     try {
-        console.log('github.context:', github.context)
+        // console.log('github.context:', github.context)
 
         // Parse Ref
         console.log('github.context.ref:', github.context.ref)

@@ -5,7 +5,7 @@ const { parse } = require('csv-parse/sync')
 
 ;(async () => {
     try {
-        console.log('github.context:', github.context)
+        // console.log('github.context:', github.context)
 
         // Parse Ref
         console.log('github.context.ref:', github.context.ref)
