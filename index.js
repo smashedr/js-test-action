@@ -14,8 +14,7 @@ const { parse } = require('csv-parse/sync')
 
         const value = github.context.ref.split('/', 2).join('/') + '/'
         console.log('value:', value)
-        // const ref = github.context.ref.replace(value, '')
-        const ref = '0.1.1'
+        const ref = github.context.ref.replace(value, '')
         console.log('ref:', ref)
 
         // Process Inputs
