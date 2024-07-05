@@ -1,14 +1,13 @@
 {
     "env": {
-        "browser": true,
-        "es2021": true,
-        "jquery": true,
-        "webextensions": true
+        "es2021": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
     "rules": {
+        "no-extra-semi": "off"
     }
 }

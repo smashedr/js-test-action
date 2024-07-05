@@ -1,46 +1,28 @@
+[![Tags](https://github.com/smashedr/js-test-action/actions/workflows/tags.yaml/badge.svg)](https://github.com/smashedr/js-test-action/actions/workflows/tags.yaml)
+
 # JS Test Action
 
-This action should never be used under any circumstances, be it life, death, or npm...
+Parse GitHub Issue Forms Action
 
-https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
+> [!NOTE]   
+> Please submit a [Feature Request](https://github.com/smashedr/js-test-action/discussions/categories/feature-requests)
+> for new features or [Open an Issue](https://github.com/smashedr/js-test-action/issues) if you find any bugs.
 
 ## Inputs
 
-| input    | description               |
-|----------|---------------------------|
-| chrome:  | Remote Docker host        |
-| firefox: | Remote Docker username    |
-
-## Example usage
+| input | required | default | description                     |
+|-------|----------|---------|---------------------------------|
+| token | Yes      | -       | Token from secrets.GITHUB_TOKEN |
+| body  | Yes      | -       | Issue Body to Parse             |
 
 ```yaml
-name: "Test JS Test"
-
-on:
-  workflow_dispatch:
-  release:
-    types: [published]
-
-jobs:
-  test:
-    name: "Test"
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-
-      - name: "Test JS"
-        uses: smashedr/js-test-action@master
-        env:
-          WEXT_SHIPIT_CHROME_EXTENSION_ID: ""
-          WEXT_SHIPIT_CHROME_CLIENT_ID: ""
-          WEXT_SHIPIT_CHROME_CLIENT_SECRET: ""
-          WEXT_SHIPIT_CHROME_REFRESH_TOKEN: ""
-          WEXT_SHIPIT_FIREFOX_JWT_ISSUER: ""
-          WEXT_SHIPIT_FIREFOX_JWT_SECRET: ""
-        with:
-          chrome: "build/chrome.zip"
-          firefox: "build/firefox.zip"
+  - name: "Update Tags"
+    uses: smashedr/js-test-action@master
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      body: ${{ github.event.issue.body }}
 ```
+
+## Simple Example
+
+Coming Soon...

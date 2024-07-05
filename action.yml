@@ -1,26 +1,16 @@
-name: 'Docker Tags Test Action'
-description: 'Parse Docker Tags'
+name: 'JS Test Action'
+description: 'JS Test Action'
 author: 'Shane'
 branding:
-    icon: 'tag'
-    color: 'blue'
+    icon: 'trash'
+    color: 'gray-dark'
 
 inputs:
-    images:
-        description: 'Image Names to Tag'
-        required: true
-    extra:
-        description: 'Extra Tags to Add'
+    token:
+        description: "GitHub Token from secrets.GITHUB_TOKEN"
         required: false
-    seperator:
-        description: 'Tags Output Seperator'
-        required: false
-    latest:
-        description: 'Add latest Tag'
-        required: false
-        default: 'default'
-    prefix:
-        description: 'Semantic Tag Prefix'
+    body:
+        description: "Body"
         required: false
 
 outputs:
