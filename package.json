@@ -4,7 +4,7 @@
   "description": "JS Test Action",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build index.js"
+    "build": "ncc build src/index.js"
   },
   "keywords": [],
   "author": "",
