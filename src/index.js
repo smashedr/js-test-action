@@ -4,8 +4,6 @@ const github = require('@actions/github')
 ;(async () => {
     try {
         console.log('github.context:', github.context)
-        console.log('url:', github.context.repository.url)
-        console.log('clone_url:', github.context.repository.clone_url)
 
         // Set Variables
         const { owner, repo } = github.context.repo
