@@ -2,7 +2,7 @@
 
 # JS Test Action
 
-Parse GitHub Issue Forms Action
+Example README.md
 
 > [!NOTE]   
 > Please submit a [Feature Request](https://github.com/smashedr/js-test-action/discussions/categories/feature-requests)

@@ -2,9 +2,10 @@
   "name": "js-test-action",
   "version": "1.0.0",
   "description": "JS Test Action",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/index.js"
+    "build": "ncc build src/index.js",
+    "lint": "npx eslint src"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.1",
-    "prettier": "^3.3.1"
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3"
   }
 }
