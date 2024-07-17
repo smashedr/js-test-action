@@ -31084,6 +31084,7 @@ const github = __nccwpck_require__(5438)
 ;(async () => {
     try {
         // console.log('github.context:', github.context)
+        // console.log('process.env:', process.env)
 
         const token = core.getInput('token')
         console.log('token:', token)
@@ -31094,6 +31095,9 @@ const github = __nccwpck_require__(5438)
         const { owner, repo } = github.context.repo
         console.log('owner:', owner)
         console.log('repo:', repo)
+
+        console.log('github.context.ref:', github.context.ref)
+        console.log('process.env.TEST_ENV:', process.env.TEST_ENV)
 
         core.info('Success')
     } catch (e) {
