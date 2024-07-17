@@ -1,17 +1,4 @@
 .idea/
 *.iml
-.coverage
-__pycache__/
-*.pyc
-venv/
-*.log
-settings.ini
-secrets.txt
 .vscode/
-**/dist/
-build/
 node_modules/
-web-ext-artifacts/
-tests/screenshots/
-src/manifest.json
-package-lock.json
