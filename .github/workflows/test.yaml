@@ -16,13 +16,15 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: "JS Test Action"
-        id: update
-        uses: smashedr/js-test-action@master
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Test Local Action"
+        id: test
+        uses: ./
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           body: "Test Body"
 
-      - name: "Echo Output"
+      - name: "Echo Outputs"
         run: |
-          echo '${{ steps.update.outputs.result }}'
+          echo '${{ steps.test.outputs.result }}'
