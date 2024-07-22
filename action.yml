@@ -1,9 +1,9 @@
-name: "JS Test Action"
-description: "JS Test Action"
+name: "JavaScript Test Action"
+description: "JavaScript Test Action"
 author: "Shane"
 branding:
-  icon: "trash"
-  color: "gray-dark"
+  icon: "type"
+  color: "green"
 
 inputs:
   token:
@@ -13,9 +13,9 @@ inputs:
     description: "Body"
     required: false
 
-#outputs:
-#  tags:
-#    description: "Generated Docker tags"
+outputs:
+  result:
+    description: "Result Output"
 
 runs:
   using: "node20"
