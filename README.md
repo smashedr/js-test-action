@@ -20,7 +20,7 @@
   - name: "JS Test Action"
     uses: smashedr/js-test-action@master
     with:
-      body: ${{ github.event.issue.body }}
+      body: "Test Body"
 ```
 
 ## Outputs
@@ -31,12 +31,12 @@
 
 ```yaml
   - name: "JS Test Action"
-    id: update
+    id: test
     uses: smashedr/js-test-action@master
     with:
-      body: ${{ github.event.issue.body }}
+      body: "Test Body"
 
   - name: "Echo Output"
     run: |
-      echo '${{ steps.update.outputs.result }}'
+      echo '${{ steps.test.outputs.result }}'
 ```
