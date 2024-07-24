@@ -7,8 +7,8 @@ on:
       - "src/**"
 
 jobs:
-  checkout:
-    name: "Checkout"
+  test:
+    name: "Test"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -16,29 +16,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-  setup:
-    name: "Setup"
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: [checkout]
-
-    steps:
-      - name: "Setup Node"
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: "ESLint"
-        run: |
-          npm install
-
-  test:
-    name: "Test"
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: [checkout]
-
-    steps:
       - name: "Test Local Action"
         id: test
         uses: ./
@@ -53,22 +30,38 @@ jobs:
     name: "Lint"
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: [checkout, setup]
 
     steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: "ESLint"
         run: |
+          npm install
           npm run lint
 
   build:
     name: "Build"
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: [checkout, setup]
 
     steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: "Build"
         run: |
+          npm install
           npm run build
 
       - name: "Verify"
