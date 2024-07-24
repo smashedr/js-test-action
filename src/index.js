@@ -3,9 +3,6 @@ const github = require('@actions/github')
 
 const { wait } = require('./wait')
 
-/**
- * The main function for the action.
- */
 ;(async () => {
     try {
         // console.log('github.context:', github.context)
