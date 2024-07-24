@@ -12,9 +12,9 @@
 
 ## Inputs
 
-| input | required | default | description              |
-|-------|----------|---------|--------------------------|
-| body  | Yes      | -       | Test Body Data to Output |
+| input        | required | default | description          |
+|--------------|----------|---------|----------------------|
+| milliseconds | No       | 1000    | Milliseconds to wait |
 
 ```yaml
   - name: "JS Test Action"
@@ -27,7 +27,7 @@
 
 | output | description    |
 |--------|----------------|
-| result | Results Output |
+| time   | Resulting Time |
 
 ```yaml
   - name: "JS Test Action"
