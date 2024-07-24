@@ -6,13 +6,14 @@ branding:
   color: "green"
 
 inputs:
-  body:
-    description: "Test Body"
+  milliseconds:
+    description: "Your input description here"
     required: false
+    default: "1000"
 
 outputs:
-  result:
-    description: "Result Output"
+  time:
+    description: "Your output description here"
 
 runs:
   using: "node20"

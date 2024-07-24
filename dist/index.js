@@ -29188,6 +29188,29 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 1312:
+/***/ ((module) => {
+
+/**
+ * Wait for a number of milliseconds.
+ * @param {Number} milliseconds The number of milliseconds to wait.
+ * @returns {Promise<string>} Resolves with 'done!' after the wait is over.
+ */
+async function wait(milliseconds) {
+    return new Promise((resolve) => {
+        if (isNaN(milliseconds)) {
+            throw new Error('milliseconds not a number')
+        }
+
+        setTimeout(() => resolve(new Date().toTimeString()), milliseconds)
+    })
+}
+
+module.exports = { wait }
+
+
+/***/ }),
+
 /***/ 9491:
 /***/ ((module) => {
 
@@ -31081,21 +31104,31 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186)
 const github = __nccwpck_require__(5438)
 
+const { wait } = __nccwpck_require__(1312)
+
+/**
+ * The main function for the action.
+ */
 ;(async () => {
     try {
         // console.log('github.context:', github.context)
         // console.log('process.env:', process.env)
 
-        const body = core.getInput('body', { required: true })
-        console.log('body:', body)
+        const ms = core.getInput('milliseconds', { required: true })
+        core.info(`ms: ${ms}`)
 
         // Example GitHub Context
         const { owner, repo } = github.context.repo
         console.log('owner:', owner)
         console.log('repo:', repo)
 
-        const result = body + ' - updated by js-test-action'
-        core.setOutput('result', result)
+        // Log the current timestamp, wait, then log the new timestamp
+        core.info(new Date().toTimeString())
+        const result = await wait(parseInt(ms, 10))
+        console.log('result:', result)
+
+        // Set outputs for other workflow steps to use
+        core.setOutput('time', result)
 
         core.info(`\u001b[32;1mFinished Success`)
     } catch (e) {
