@@ -17,8 +17,6 @@ const github = require('@actions/github')
         const result = body + ' - updated by js-test-action'
         core.setOutput('result', result)
 
-        console.log('Test 2')
-
         core.info(`\u001b[32;1mFinished Success`)
     } catch (e) {
         core.debug(e)
