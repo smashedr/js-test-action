@@ -57,7 +57,7 @@ const Tags = require('./tags')
             core.info('📝 Writing Job Summary')
             core.summary.addHeading('JS Test Action', '2')
             core.summary.addRaw(
-                `<p>${result}: <strong>${tag}</strong> :arrow_right: <code>${sha}</code></p>`,
+                `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
                 true
             )
             core.summary.addDetails(

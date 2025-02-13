@@ -10,6 +10,10 @@
 
 # JavaScript Test Action
 
+This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
+
+This includes inputs, outputs, job summary, and automatic token authentication.
+
 - [Inputs](#Inputs)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
@@ -17,16 +21,20 @@
 
 ## Inputs
 
-| input   | required | default               | description                      |
-| ------- | -------- | --------------------- | -------------------------------- |
-| tag     | No       | test                  | Tag to Create or Update \*       |
-| summary | No       | true                  | Add Summary to Job \*            |
-| token   | No       | `${{ github.token }}` | Only for backwards comaptiblity. |
+| input   | required | default               | description             |
+| ------- | -------- | --------------------- | ----------------------- |
+| tag     | No       | test                  | Tag to Create or Update |
+| summary | No       | true                  | Add Summary to Job      |
+| token   | No       | `${{ github.token }}` | Only if External Tokens |
+
+With no inputs this will create/update the tag `test`.
 
 ```yaml
 - name: 'JS Test Action'
   uses: smashedr/js-test-action@master
 ```
+
+With all inputs. Note that `token` is NOT required.
 
 ```yaml
 - name: 'JS Test Action'
@@ -35,6 +43,15 @@
     tag: test
     summary: true
     token: ${{ secrets.GITHUB_TOKEN }} # there is no need to add this input anymore
+```
+
+### Permissions
+
+This action requires the following job permissions:
+
+```yaml
+permissions:
+  contents: write
 ```
 
 ## Outputs
@@ -53,7 +70,7 @@
     echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
 
-# Examples
+## Examples
 
 ```yaml
 name: 'Test'
@@ -67,6 +84,8 @@ jobs:
     name: 'Test'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: write
 
     steps:
       - name: 'Checkout'
@@ -80,6 +99,31 @@ jobs:
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
+
+# About Actions
+
+This is a JavaScript Action. For other types see:
+
+- TypeScript: https://github.com/smashedr/ts-test-action
+- Docker/Python: https://github.com/smashedr/py-test-action
+
+## Overview
+
+The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
+
+- https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions
+
+JS Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
+
+## Toolkit
+
+The toolkit contains many parts. The `@actions/core` is required and this action uses the `@actions/github` module.
+
+- https://github.com/actions/toolkit
+
+This also uses `github.getOctokit`.
+
+- https://octokit.github.io/rest.js
 
 # Development
 
