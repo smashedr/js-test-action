@@ -12,37 +12,73 @@
 
 - [Inputs](#Inputs)
 - [Outputs](#Outputs)
+- [Examples](#Examples)
 - [Development](#Development)
 
 ## Inputs
 
-| input        | required | default | description          |
-| ------------ | -------- | ------- | -------------------- |
-| milliseconds | No       | 1000    | Milliseconds to wait |
+| input   | required | default               | description                      |
+| ------- | -------- | --------------------- | -------------------------------- |
+| tag     | No       | test                  | Tag to Create or Update \*       |
+| summary | No       | true                  | Add Summary to Job \*            |
+| token   | No       | `${{ github.token }}` | Only for backwards comaptiblity. |
+
+```yaml
+- name: 'JS Test Action'
+  uses: smashedr/js-test-action@master
+```
 
 ```yaml
 - name: 'JS Test Action'
   uses: smashedr/js-test-action@master
   with:
-    milliseconds: 2000
+    tag: test
+    summary: true
+    token: ${{ secrets.GITHUB_TOKEN }} # there is no need to add this input anymore
 ```
 
 ## Outputs
 
-| output | description    |
-| ------ | -------------- |
-| time   | Resulting Time |
+| output | description |
+| ------ | ----------- |
+| sha    | Tag Hash    |
 
 ```yaml
 - name: 'JS Test Action'
   id: test
   uses: smashedr/js-test-action@master
-  with:
-    milliseconds: 2000
 
 - name: 'Echo Output'
   run: |
-    echo '${{ steps.test.outputs.time }}'
+    echo "sha: '${{ steps.test.outputs.sha }}'"
+```
+
+# Examples
+
+```yaml
+name: 'Test'
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test:
+    name: 'Test'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: 'Test'
+        id: test
+        uses: smashedr/js-test-action@master
+
+      - name: 'Echo Outputs'
+        run: |
+          echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
 
 # Development
