@@ -29944,8 +29944,7 @@ class Tags {
     }
 
     async createRef(tag, sha) {
-        console.log(`createRef: refs/tags/${tag}`)
-        console.log('sha:', sha)
+        console.log(`createRef: refs/tags/${tag}`, sha)
         return await this.octokit.rest.git.createRef({
             owner: this.owner,
             repo: this.repo,
@@ -29955,8 +29954,7 @@ class Tags {
     }
 
     async updateRef(tag, sha, force = false) {
-        console.log(`updateRef: tags/${tag}`)
-        console.log('sha:', sha, force)
+        console.log(`updateRef: tags/${tag}`, sha, force)
         await this.octokit.rest.git.updateRef({
             owner: this.owner,
             repo: this.repo,
@@ -31891,7 +31889,7 @@ const Tags = __nccwpck_require__(800)
 
 ;(async () => {
     try {
-        core.info(`🏳️ \u001b[36mStarting JS Test Action`)
+        core.info(`🏳️ \u001b[35mStarting JS Test Action`)
 
         // Debug
         // console.log('github.context:', github.context)
@@ -31914,7 +31912,8 @@ const Tags = __nccwpck_require__(800)
         const tags = new Tags(token, owner, repo)
 
         // Action
-        core.info(`⌛ Processing tag: \u001b[37m"${tag}"`)
+        core.info(`⌛ Processing tag: "${tag}"`)
+        let result
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
         if (reference) {
@@ -31922,12 +31921,15 @@ const Tags = __nccwpck_require__(800)
             if (sha !== reference.data.object.sha) {
                 core.info(`\u001b[32mUpdating tag "${tag}" to: ${sha}`)
                 await tags.updateRef(tag, sha, true)
+                result = 'Updated'
             } else {
                 core.info(`\u001b[36mTag "${tag}" already points to: ${sha}`)
+                result = 'Not Changed'
             }
         } else {
             core.info(`\u001b[33mCreating new tag "${tag}" to: ${sha}`)
             await tags.createRef(tag, sha)
+            result = 'Created'
         }
 
         // Outputs
@@ -31939,7 +31941,7 @@ const Tags = __nccwpck_require__(800)
             core.info('📝 Writing Job Summary...')
             core.summary.addHeading('JS Test Action', '2')
             core.summary.addRaw(
-                `<p><strong>${tag}</strong> :arrow_right: <code>${sha}</code></p>`,
+                `<p>${result}: <strong>${tag}</strong> :arrow_right: <code>${sha}</code></p>`,
                 true
             )
             core.summary.addRaw(
