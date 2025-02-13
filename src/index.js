@@ -5,7 +5,7 @@ const Tags = require('./tags')
 
 ;(async () => {
     try {
-        core.info(`🏳️ \u001b[35mStarting JS Test Action`)
+        core.info(`🏳️ Starting JS Test Action`)
 
         // Debug
         // console.log('github.context:', github.context)
@@ -35,7 +35,7 @@ const Tags = require('./tags')
         if (reference) {
             console.log('reference.data.object.sha:', reference.data.object.sha)
             if (sha !== reference.data.object.sha) {
-                core.info(`\u001b[32mUpdating tag "${tag}" to: ${sha}`)
+                core.info(`\u001b[35mUpdating tag "${tag}" to: ${sha}`)
                 await tags.updateRef(tag, sha, true)
                 result = 'Updated'
             } else {
@@ -49,16 +49,20 @@ const Tags = require('./tags')
         }
 
         // Outputs
-        core.info('📩 Setting Outputs...')
+        core.info('📩 Setting Outputs')
         core.setOutput('sha', sha)
 
         // Summary
         if (summary) {
-            core.info('📝 Writing Job Summary...')
+            core.info('📝 Writing Job Summary')
             core.summary.addHeading('JS Test Action', '2')
             core.summary.addRaw(
                 `<p>${result}: <strong>${tag}</strong> :arrow_right: <code>${sha}</code></p>`,
                 true
+            )
+            core.summary.addDetails(
+                'Inputs',
+                `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
             )
             core.summary.addRaw(
                 '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issues or request a feature</a></p>',
@@ -66,7 +70,7 @@ const Tags = require('./tags')
             )
             await core.summary.write()
         } else {
-            core.info('⏩ Skipping Job Summary...')
+            core.info('⏩ Skipping Job Summary')
         }
 
         core.info(`✅ \u001b[32;1mFinished Success`)
