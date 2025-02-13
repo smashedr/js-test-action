@@ -29915,25 +29915,57 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 8644:
-/***/ ((module) => {
+/***/ 800:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-/**
- * Wait for a number of milliseconds.
- * @param {Number} milliseconds The number of milliseconds to wait.
- * @returns {Promise<string>} Resolves with 'done!' after the wait is over.
- */
-async function wait(milliseconds) {
-    return new Promise((resolve) => {
-        if (isNaN(milliseconds)) {
-            throw new Error('milliseconds not a number')
+const github = __nccwpck_require__(3228)
+
+class Tags {
+    constructor(token, owner, repo) {
+        this.owner = owner
+        this.repo = repo
+        this.octokit = github.getOctokit(token)
+    }
+
+    async getRef(tag) {
+        console.log(`getRef: tags/${tag}`)
+        try {
+            return await this.octokit.rest.git.getRef({
+                owner: this.owner,
+                repo: this.repo,
+                ref: `tags/${tag}`,
+            })
+        } catch (e) {
+            if (e.status === 404) {
+                return null
+            }
+            throw new Error(e)
         }
+    }
 
-        setTimeout(() => resolve(new Date().toTimeString()), milliseconds)
-    })
+    async createRef(tag, sha) {
+        console.log(`createRef: refs/tags/${tag}`, sha)
+        return await this.octokit.rest.git.createRef({
+            owner: this.owner,
+            repo: this.repo,
+            ref: `refs/tags/${tag}`,
+            sha,
+        })
+    }
+
+    async updateRef(tag, sha, force = false) {
+        console.log(`updateRef: tags/${tag}`, sha, force)
+        await this.octokit.rest.git.updateRef({
+            owner: this.owner,
+            repo: this.repo,
+            ref: `tags/${tag}`,
+            sha,
+            force,
+        })
+    }
 }
 
-module.exports = { wait }
+module.exports = Tags
 
 
 /***/ }),
@@ -31853,30 +31885,79 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(7484)
 const github = __nccwpck_require__(3228)
 
-const { wait } = __nccwpck_require__(8644)
+const Tags = __nccwpck_require__(800)
 
 ;(async () => {
     try {
+        core.info(`🏳️ Starting JS Test Action`)
+
+        // Debug
         // console.log('github.context:', github.context)
         // console.log('process.env:', process.env)
 
-        const ms = core.getInput('milliseconds', { required: true })
-        core.info(`ms: ${ms}`)
+        // Inputs
+        const tag = core.getInput('tag', { required: true })
+        core.info(`tag: "${tag}"`)
+        const summary = core.getBooleanInput('summary', { required: true })
+        core.info(`summary: "${summary}"`)
+        const token = core.getInput('token', { required: true })
+        core.info(`token: "${token}"`)
 
-        // Example GitHub Context
+        // Context
         const { owner, repo } = github.context.repo
-        console.log('owner:', owner)
-        console.log('repo:', repo)
+        core.info(`owner: "${owner}"`)
+        core.info(`repo: "${repo}"`)
+        const sha = github.context.sha
+        core.info(`sha: "${sha}"`)
+        const tags = new Tags(token, owner, repo)
 
-        // Log the current timestamp, wait, then log the new timestamp
-        core.info(new Date().toTimeString())
-        const result = await wait(parseInt(ms, 10))
-        console.log('result:', result)
+        // Action
+        core.info(`⌛ Processing tag: "${tag}"`)
+        let result
+        const reference = await tags.getRef(tag)
+        // console.log('reference.data:', reference?.data)
+        if (reference) {
+            console.log('reference.data.object.sha:', reference.data.object.sha)
+            if (sha !== reference.data.object.sha) {
+                core.info(`\u001b[35mUpdating tag "${tag}" to: ${sha}`)
+                await tags.updateRef(tag, sha, true)
+                result = 'Updated'
+            } else {
+                core.info(`\u001b[36mTag "${tag}" already points to: ${sha}`)
+                result = 'Not Changed'
+            }
+        } else {
+            core.info(`\u001b[33mCreating new tag "${tag}" to: ${sha}`)
+            await tags.createRef(tag, sha)
+            result = 'Created'
+        }
 
-        // Set outputs for other workflow steps to use
-        core.setOutput('time', result)
+        // Outputs
+        core.info('📩 Setting Outputs')
+        core.setOutput('sha', sha)
 
-        core.info(`\u001b[32;1mFinished Success`)
+        // Summary
+        if (summary) {
+            core.info('📝 Writing Job Summary')
+            core.summary.addHeading('JS Test Action', '2')
+            core.summary.addRaw(
+                `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
+                true
+            )
+            core.summary.addDetails(
+                'Inputs',
+                `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
+            )
+            core.summary.addRaw(
+                '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issues or request a feature</a></p>',
+                true
+            )
+            await core.summary.write()
+        } else {
+            core.info('⏩ Skipping Job Summary')
+        }
+
+        core.info(`✅ \u001b[32;1mFinished Success`)
     } catch (e) {
         core.debug(e)
         core.info(e.message)
