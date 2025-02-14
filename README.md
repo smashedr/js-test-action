@@ -21,11 +21,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| input   | required | default               | description             |
-| ------- | -------- | --------------------- | ----------------------- |
-| tag     | No       | test                  | Tag to Create or Update |
-| summary | No       | true                  | Add Summary to Job      |
-| token   | No       | `${{ github.token }}` | Only if External Tokens |
+| input   | required | default               | description                 |
+| ------- | -------- | --------------------- | --------------------------- |
+| tag     | No       | test                  | Tag to Create or Update     |
+| summary | No       | true                  | Add Summary to Job          |
+| token   | No       | `${{ github.token }}` | Only if External Token [^1] |
 
 With no inputs this will create/update the tag `test`.
 
@@ -42,12 +42,12 @@ With all inputs. Note that `token` is NOT required.
   with:
     tag: test
     summary: true
-    token: ${{ secrets.GITHUB_TOKEN }} # there is no need to add this input anymore
+    token: ${{ secrets.PAT }} # only include this if you need to use a PAT
 ```
 
 ### Permissions
 
-This action requires the following job permissions:
+This action requires the following permissions:
 
 ```yaml
 permissions:
@@ -91,7 +91,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
 
-      - name: 'Test'
+      - name: 'JS Test Action'
         id: test
         uses: smashedr/js-test-action@master
 
@@ -140,3 +140,7 @@ You should also review the options from `act --help`
 
 Note, the `.env`, `.secrets` and `.vars` files are automatically sourced with no extra options.
 To source `event.json` you need to run act with `act -e event.json`
+
+[^1]:
+    The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
+    This is only available to allow users to pass a different token they have created and defined in their `secrets`.

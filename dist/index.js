@@ -31939,7 +31939,7 @@ const Tags = __nccwpck_require__(800)
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            core.summary.addHeading('JS Test Action', '2')
+            core.summary.addHeading('JS Test Action', '3')
             core.summary.addRaw(
                 `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
                 true
@@ -31949,7 +31949,7 @@ const Tags = __nccwpck_require__(800)
                 `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
             )
             core.summary.addRaw(
-                '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issues or request a feature</a></p>',
+                '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issue or request a feature</a></p>',
                 true
             )
             await core.summary.write()

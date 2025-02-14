@@ -19,6 +19,8 @@ jobs:
       - name: "Test Local Action"
         id: test
         uses: ./
+        with:
+          tag: "test"
 
       - name: "Echo Outputs"
         run: |
@@ -33,7 +35,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Setup Node"
+      - name: "Setup Node 20"
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -52,7 +54,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Setup Node"
+      - name: "Setup Node 20"
         uses: actions/setup-node@v4
         with:
           node-version: 20
