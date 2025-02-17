@@ -55,20 +55,6 @@ const Tags = require('./tags')
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            // core.summary.addHeading('JS Test Action', '3')
-            // core.summary.addRaw(
-            //     `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
-            //     true
-            // )
-            // core.summary.addDetails(
-            //     'Inputs',
-            //     `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
-            // )
-            // core.summary.addRaw(
-            //     '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issue or request a feature</a></p>',
-            //     true
-            // )
-
             const inputs_table = get_inputs_table(['tag', 'summary'])
             console.log('inputs_table:', inputs_table)
             core.summary.addRaw('### JS Test Action', true)
@@ -76,10 +62,10 @@ const Tags = require('./tags')
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
                 true
             )
-            // core.summary.addRaw(
-            //     `<details><summary>Inputs</summary>${inputs_table}</details>`,
-            //     true
-            // )
+            core.summary.addRaw(
+                `<details><summary>Inputs</summary>${inputs_table}</details>`,
+                true
+            )
             core.summary.addRaw(
                 '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
