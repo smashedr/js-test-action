@@ -8,8 +8,8 @@ const Tags = require('./tags')
         core.info(`🏳️ Starting JS Test Action`)
 
         // Debug
-        console.log('github.context:', github.context)
-        console.log('process.env:', process.env)
+        // console.log('github.context:', github.context)
+        // console.log('process.env:', process.env)
 
         // Inputs
         const tag = core.getInput('tag', { required: true })
@@ -56,7 +56,7 @@ const Tags = require('./tags')
         if (summary) {
             core.info('📝 Writing Job Summary')
             const input_details = get_input_details(['tag', 'summary'])
-            console.log('input_details:', input_details)
+            // console.log('input_details:', input_details)
             core.summary.addRaw('### JS Test Action', true)
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
