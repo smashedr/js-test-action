@@ -31909,6 +31909,7 @@ const Tags = __nccwpck_require__(800)
         core.info(`repo: "${repo}"`)
         const sha = github.context.sha
         core.info(`sha: "${sha}"`)
+
         const tags = new Tags(token, owner, repo)
 
         // Action
@@ -31976,9 +31977,9 @@ function gen_inputs_table(inputs) {
         '<details><summary>Inputs</summary>',
         '<table><tr><th>Input</th><th>Value</th></tr>',
     ]
-    for (const [key, value] of Object.entries(inputs)) {
-        const result = value.toString() || '-'
-        table.push(`<tr><td>${key}</td><td>${result || '-'}</td></tr>`)
+    for (const [key, object] of Object.entries(inputs)) {
+        const value = object.toString() || '-'
+        table.push(`<tr><td>${key}</td><td>${value}</td></tr>`)
     }
     return table.join('') + '</table></details>'
 }
