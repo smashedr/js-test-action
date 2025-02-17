@@ -31978,8 +31978,10 @@ function gen_inputs_table(inputs) {
         '<table><tr><th>Input</th><th>Value</th></tr>',
     ]
     for (const [key, value] of Object.entries(inputs)) {
-        console.log('key:', key, value)
-        table.push(`<tr><td>${key}</td><td>${value}</td></tr>`)
+        // console.log(`key: ${key}:`, value)
+        const result = value.toString() || '-'
+        // console.log('result:', result)
+        table.push(`<tr><td>${key}</td><td>${result || '-'}</td></tr>`)
     }
     return table.join('') + '</table></details>'
 }
