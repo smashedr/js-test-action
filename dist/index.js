@@ -31939,14 +31939,24 @@ const Tags = __nccwpck_require__(800)
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            const input_details = get_input_details(['tag', 'summary'])
-            // console.log('input_details:', input_details)
+            const input_details = [
+                '<details><summary>Inputs</summary>',
+                '<table><tr><th>Input</th><th>Value</th></tr>',
+            ]
+            const inputs = ['tag', 'summary']
+            inputs.forEach((input) => {
+                input_details.push(
+                    `<tr><td>${input}</td><td>${globalThis[input]}</td></tr>`
+                )
+            })
+            input_details.push('</table></details>')
+            console.log('input_details:', input_details)
             core.summary.addRaw('### JS Test Action', true)
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
                 true
             )
-            core.summary.addRaw(`${input_details}`, true)
+            core.summary.addRaw(input_details.join(''), true)
             core.summary.addRaw(
                 '\n[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
