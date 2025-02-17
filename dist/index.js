@@ -31892,8 +31892,8 @@ const Tags = __nccwpck_require__(800)
         core.info(`🏳️ Starting JS Test Action`)
 
         // Debug
-        // console.log('github.context:', github.context)
-        // console.log('process.env:', process.env)
+        console.log('github.context:', github.context)
+        console.log('process.env:', process.env)
 
         // Inputs
         const tag = core.getInput('tag', { required: true })
@@ -31939,33 +31939,16 @@ const Tags = __nccwpck_require__(800)
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            // core.summary.addHeading('JS Test Action', '3')
-            // core.summary.addRaw(
-            //     `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
-            //     true
-            // )
-            // core.summary.addDetails(
-            //     'Inputs',
-            //     `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
-            // )
-            // core.summary.addRaw(
-            //     '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issue or request a feature</a></p>',
-            //     true
-            // )
-
-            const inputs_table = get_inputs_table(['tag', 'summary'])
-            console.log('inputs_table:', inputs_table)
+            const input_details = get_input_details(['tag', 'summary'])
+            console.log('input_details:', input_details)
             core.summary.addRaw('### JS Test Action', true)
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
                 true
             )
-            // core.summary.addRaw(
-            //     `<details><summary>Inputs</summary>${inputs_table}</details>`,
-            //     true
-            // )
+            core.summary.addRaw(`${input_details}`, true)
             core.summary.addRaw(
-                '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
+                '\n[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
             )
             await core.summary.write()
@@ -31982,16 +31965,19 @@ const Tags = __nccwpck_require__(800)
 })()
 
 /**
- * @function get_inputs_table
+ * @function get_input_details
  * @param {String[]} inputs
  * @return String
  */
-function get_inputs_table(inputs) {
-    const table = ['<table><tr><th>Input</th><th>Value</th></tr>']
+function get_input_details(inputs) {
+    const table = [
+        '<details><summary>Inputs</summary>',
+        '<table><tr><th>Input</th><th>Value</th></tr>',
+    ]
     inputs.forEach((input) => {
         table.push(`<tr><td>${input}</td><td>${globalThis[input]}</td></tr>`)
     })
-    return table.join('') + '</table>'
+    return table.join('') + '</table></details>'
 }
 
 module.exports = __webpack_exports__;
