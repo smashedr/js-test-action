@@ -33,7 +33,7 @@ const Tags = require('./tags')
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
         if (reference) {
-            console.log('reference.data.object.sha:', reference.data.object.sha)
+            core.info(`current sha: ${reference.data.object.sha}`)
             if (sha !== reference.data.object.sha) {
                 core.info(`\u001b[35mUpdating tag "${tag}" to: ${sha}`)
                 await tags.updateRef(tag, sha, true)
@@ -59,7 +59,6 @@ const Tags = require('./tags')
                 tag: tag,
                 summary: summary,
             })
-            console.log('inputs_table:', inputs_table)
             core.summary.addRaw('### JS Test Action', true)
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
