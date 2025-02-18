@@ -31951,6 +31951,9 @@ const Tags = __nccwpck_require__(800)
             )
             core.summary.addRaw(inputs_table, true)
             core.summary.addRaw(
+                '\n[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | '
+            )
+            core.summary.addRaw(
                 '\n[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
             )

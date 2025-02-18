@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&logoColor=white&label=tags)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
+[![Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&logoColor=white&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/releases/latest)
@@ -26,6 +26,16 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 | tag     | No       | test                  | Tag to Create or Update     |
 | summary | No       | true                  | Add Summary to Job          |
 | token   | No       | `${{ github.token }}` | Only if External Token [^1] |
+
+<details><summary>📜 View Example Summary</summary>
+
+---
+
+### Docker Tags Action
+
+Coming soon...
+
+</details>
 
 With no inputs this will create/update the tag `test`.
 
@@ -127,9 +137,13 @@ This also uses `github.getOctokit`.
 
 # Development
 
-1. Install `act`: https://nektosact.com/installation/index.html
-2. Run `npm run build:watch`
-3. In another terminal, run `act -j test`
+To run actions locally you need to install act: https://nektosact.com/installation/index.html
+
+```shell
+npm install
+npm run build:watch
+act -j test
+```
 
 Alternatively, to run from source, change `main` in [action.yml](action.yml) to `src/index.js` and
 run: `act -j test --use-gitignore=false`
