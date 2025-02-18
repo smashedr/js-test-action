@@ -31,9 +31,15 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ---
 
-### Docker Tags Action
+<h3>JS Test Action</h3>
 
-Coming soon...
+Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
+
+<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>test</td></tr><tr><td>summary</td><td>true</td></tr></table></details>
+
+[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | [Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)
+
+---
 
 </details>
 

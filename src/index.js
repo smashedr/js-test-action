@@ -70,7 +70,7 @@ const Tags = require('./tags')
                 '\n[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | '
             )
             core.summary.addRaw(
-                '\n[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
+                '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
             )
             await core.summary.write()
