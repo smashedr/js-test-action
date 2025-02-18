@@ -10,14 +10,15 @@
 
 # JavaScript Test Action
 
-This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
-
-This includes inputs, outputs, job summary, and automatic token authentication.
-
 - [Inputs](#Inputs)
+  - [Permissions](#Permissions)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
 - [Development](#Development)
+
+This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
+
+This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
@@ -30,8 +31,6 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 <details><summary>📜 View Example Summary</summary>
 
 ---
-
-<h3>JS Test Action</h3>
 
 Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
 
@@ -116,14 +115,14 @@ jobs:
           echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
 
-# About Actions
+# Development
+
+## Actions Overview
 
 This is a JavaScript Action. For other types see:
 
 - TypeScript: https://github.com/smashedr/ts-test-action
 - Docker/Python: https://github.com/smashedr/py-test-action
-
-## Overview
 
 The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
 
@@ -131,7 +130,7 @@ The heart of a GitHub Action is the [action.yml](action.yml) file. This describe
 
 JS Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
 
-## Toolkit
+## Actions Toolkit
 
 The toolkit contains many parts. The `@actions/core` is required and this action uses the `@actions/github` module.
 
@@ -141,7 +140,7 @@ This also uses `github.getOctokit`.
 
 - https://octokit.github.io/rest.js
 
-# Development
+## Local Development
 
 To run actions locally you need to install act: https://nektosact.com/installation/index.html
 
