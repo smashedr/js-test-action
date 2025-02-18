@@ -25,6 +25,7 @@ const Tags = require('./tags')
         core.info(`repo: "${repo}"`)
         const sha = github.context.sha
         core.info(`sha: "${sha}"`)
+
         const tags = new Tags(token, owner, repo)
 
         // Action
@@ -33,7 +34,7 @@ const Tags = require('./tags')
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
         if (reference) {
-            console.log('reference.data.object.sha:', reference.data.object.sha)
+            core.info(`current sha: ${reference.data.object.sha}`)
             if (sha !== reference.data.object.sha) {
                 core.info(`\u001b[35mUpdating tag "${tag}" to: ${sha}`)
                 await tags.updateRef(tag, sha, true)
@@ -55,17 +56,21 @@ const Tags = require('./tags')
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            core.summary.addHeading('JS Test Action', '3')
+            const inputs_table = gen_inputs_table({
+                tag: tag,
+                summary: summary,
+            })
+            core.summary.addRaw('### JS Test Action', true)
             core.summary.addRaw(
-                `<p>${result}: <strong><a href="https://github.com/${owner}/${repo}/releases/tag/${tag}">${tag}</a></strong> :arrow_right: <code>${sha}</code></p>`,
+                `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
                 true
             )
-            core.summary.addDetails(
-                'Inputs',
-                `<table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>${tag}</td></tr><tr><td>summary</td><td>${summary}</td></tr></table>`
+            core.summary.addRaw(inputs_table, true)
+            core.summary.addRaw(
+                '\n[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | '
             )
             core.summary.addRaw(
-                '<p><a href="https://github.com/smashedr/js-test-action/issues">Report an issue or request a feature</a></p>',
+                '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
                 true
             )
             await core.summary.write()
@@ -80,3 +85,20 @@ const Tags = require('./tags')
         core.setFailed(e.message)
     }
 })()
+
+/**
+ * @function gen_inputs_table
+ * @param {Object} inputs
+ * @return String
+ */
+function gen_inputs_table(inputs) {
+    const table = [
+        '<details><summary>Inputs</summary>',
+        '<table><tr><th>Input</th><th>Value</th></tr>',
+    ]
+    for (const [key, object] of Object.entries(inputs)) {
+        const value = object.toString() || '-'
+        table.push(`<tr><td>${key}</td><td>${value}</td></tr>`)
+    }
+    return table.join('') + '</table></details>'
+}

@@ -1,4 +1,4 @@
-[![Tags](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/tags.yaml?logo=github&logoColor=white&label=tags)](https://github.com/smashedr/js-test-action/actions/workflows/tags.yaml)
+[![Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&logoColor=white&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/releases/latest)
@@ -10,14 +10,15 @@
 
 # JavaScript Test Action
 
-This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
-
-This includes inputs, outputs, job summary, and automatic token authentication.
-
 - [Inputs](#Inputs)
+  - [Permissions](#Permissions)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
 - [Development](#Development)
+
+This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
+
+This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
@@ -26,6 +27,20 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 | tag     | No       | test                  | Tag to Create or Update     |
 | summary | No       | true                  | Add Summary to Job          |
 | token   | No       | `${{ github.token }}` | Only if External Token [^1] |
+
+<details><summary>📜 View Example Summary</summary>
+
+---
+
+Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
+
+<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>test</td></tr><tr><td>summary</td><td>true</td></tr></table></details>
+
+[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | [Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)
+
+---
+
+</details>
 
 With no inputs this will create/update the tag `test`.
 
@@ -100,14 +115,14 @@ jobs:
           echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
 
-# About Actions
+# Development
+
+## Actions Overview
 
 This is a JavaScript Action. For other types see:
 
 - TypeScript: https://github.com/smashedr/ts-test-action
 - Docker/Python: https://github.com/smashedr/py-test-action
-
-## Overview
 
 The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
 
@@ -115,7 +130,7 @@ The heart of a GitHub Action is the [action.yml](action.yml) file. This describe
 
 JS Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
 
-## Toolkit
+## Actions Toolkit
 
 The toolkit contains many parts. The `@actions/core` is required and this action uses the `@actions/github` module.
 
@@ -125,11 +140,15 @@ This also uses `github.getOctokit`.
 
 - https://octokit.github.io/rest.js
 
-# Development
+## Local Development
 
-1. Install `act`: https://nektosact.com/installation/index.html
-2. Run `npm run build:watch`
-3. In another terminal, run `act -j test`
+To run actions locally you need to install act: https://nektosact.com/installation/index.html
+
+```shell
+npm install
+npm run build:watch
+act -j test
+```
 
 Alternatively, to run from source, change `main` in [action.yml](action.yml) to `src/index.js` and
 run: `act -j test --use-gitignore=false`
