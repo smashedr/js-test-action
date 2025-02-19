@@ -56,26 +56,30 @@ const Tags = require('./tags')
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            const inputs_table = gen_inputs_table({
-                tag: tag,
-                summary: summary,
-            })
-            core.summary.addRaw('### JS Test Action', true)
+
+            core.summary.addRaw('### JS Test Action\n')
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
                 true
             )
-            core.summary.addRaw(inputs_table, true)
+
+            core.summary.addRaw('<details><summary>Inputs</summary>')
+            core.summary.addTable([
+                [
+                    { data: 'Input', header: true },
+                    { data: 'Value', header: true },
+                ],
+                [{ data: 'tag' }, { data: `<code>${tag}</code>` }],
+                [{ data: 'summary' }, { data: `<code>${summary}</code>` }],
+            ])
+            core.summary.addRaw('</details>\n')
+
+            const text = 'View Documentation, Report Issues or Request Features'
+            const link = 'https://github.com/smashedr/js-test-action'
             core.summary.addRaw(
-                '\n[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | '
-            )
-            core.summary.addRaw(
-                '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
-                true
+                `\n[${text}](${link}?tab=readme-ov-file#readme)`
             )
             await core.summary.write()
-        } else {
-            core.info('⏩ Skipping Job Summary')
         }
 
         core.info(`✅ \u001b[32;1mFinished Success`)
@@ -85,20 +89,3 @@ const Tags = require('./tags')
         core.setFailed(e.message)
     }
 })()
-
-/**
- * @function gen_inputs_table
- * @param {Object} inputs
- * @return String
- */
-function gen_inputs_table(inputs) {
-    const table = [
-        '<details><summary>Inputs</summary>',
-        '<table><tr><th>Input</th><th>Value</th></tr>',
-    ]
-    for (const [key, object] of Object.entries(inputs)) {
-        const value = object.toString() || '-'
-        table.push(`<tr><td>${key}</td><td>${value}</td></tr>`)
-    }
-    return table.join('') + '</table></details>'
-}
