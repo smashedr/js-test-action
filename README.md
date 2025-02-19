@@ -115,6 +115,8 @@ jobs:
 
 # Development
 
+A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
+
 ## Actions Overview
 
 This is a JavaScript Action. For other types see:

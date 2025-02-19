@@ -31943,8 +31943,7 @@ const Tags = __nccwpck_require__(800)
 
             core.summary.addRaw('### JS Test Action\n')
             core.summary.addRaw(
-                `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
-                true
+                `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\`\n`
             )
 
             core.summary.addRaw('<details><summary>Inputs</summary>')
