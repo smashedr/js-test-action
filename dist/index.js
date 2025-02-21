@@ -31916,7 +31916,7 @@ const Tags = __nccwpck_require__(800)
 
         // Action
         // core.info(`⌛ Processing tag: "${tag}"`)
-        core.startGroup(`⌛ Processing tag: "${tag}"`)
+        core.startGroup(`Processing tag: "${tag}"`)
         let result
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)

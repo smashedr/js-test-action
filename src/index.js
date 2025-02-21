@@ -33,7 +33,7 @@ const Tags = require('./tags')
 
         // Action
         // core.info(`⌛ Processing tag: "${tag}"`)
-        core.startGroup(`⌛ Processing tag: "${tag}"`)
+        core.startGroup(`Processing tag: "${tag}"`)
         let result
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
