@@ -31945,7 +31945,7 @@ const Tags = __nccwpck_require__(800)
         if (summary) {
             core.info('📝 Writing Job Summary')
 
-            core.summary.addRaw('### JS Test Action\n')
+            core.summary.addRaw('## JS Test Action\n')
             core.summary.addRaw(
                 `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\`\n`
             )
@@ -31964,7 +31964,7 @@ const Tags = __nccwpck_require__(800)
             const text = 'View Documentation, Report Issues or Request Features'
             const link = 'https://github.com/smashedr/js-test-action'
             core.summary.addRaw(
-                `\n[${text}](${link}?tab=readme-ov-file#readme)`
+                `\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`
             )
             await core.summary.write()
         }
