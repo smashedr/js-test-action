@@ -5,7 +5,8 @@
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&logoColor=white&label=updated)](https://github.com/smashedr/js-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx&logoColor=white)](https://github.com/smashedr/js-test-action)
-[![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&logoColor=white)](https://cssnr.github.io/)
+[![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/js-test-action?style=flat&logo=github&logoColor=white)](https://github.com/smashedr/js-test-action/stargazers)
+[![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&logoColor=white&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 
 # JavaScript Test Action
@@ -28,15 +29,13 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 | summary | No       | true                  | Add Summary to Job          |
 | token   | No       | `${{ github.token }}` | Only if External Token [^1] |
 
-<details><summary>📜 View Example Summary</summary>
+<details><summary>📜 View Example Job Summary</summary>
 
 ---
 
 Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
 
 <details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>test</td></tr><tr><td>summary</td><td>true</td></tr></table></details>
-
-[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | [Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)
 
 ---
 
@@ -116,6 +115,8 @@ jobs:
 ```
 
 # Development
+
+A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
 
 ## Actions Overview
 

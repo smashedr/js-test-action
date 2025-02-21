@@ -4110,18 +4110,18 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // pkg/dist-src/index.js
-var dist_src_exports = {};
-__export(dist_src_exports, {
+var index_exports = {};
+__export(index_exports, {
   GraphqlResponseError: () => GraphqlResponseError,
   graphql: () => graphql2,
   withCustomRequest: () => withCustomRequest
 });
-module.exports = __toCommonJS(dist_src_exports);
+module.exports = __toCommonJS(index_exports);
 var import_request3 = __nccwpck_require__(8636);
 var import_universal_user_agent = __nccwpck_require__(3843);
 
 // pkg/dist-src/version.js
-var VERSION = "7.1.0";
+var VERSION = "7.1.1";
 
 // pkg/dist-src/with-defaults.js
 var import_request2 = __nccwpck_require__(8636);
@@ -4169,8 +4169,7 @@ function graphql(request2, query, options) {
       );
     }
     for (const key in options) {
-      if (!FORBIDDEN_VARIABLE_OPTIONS.includes(key))
-        continue;
+      if (!FORBIDDEN_VARIABLE_OPTIONS.includes(key)) continue;
       return Promise.reject(
         new Error(
           `[@octokit/graphql] "${key}" cannot be used as variable name`
@@ -31896,6 +31895,7 @@ const Tags = __nccwpck_require__(800)
         // console.log('process.env:', process.env)
 
         // Inputs
+        core.startGroup('Inputs')
         const tag = core.getInput('tag', { required: true })
         core.info(`tag: "${tag}"`)
         const summary = core.getBooleanInput('summary', { required: true })
@@ -31907,13 +31907,16 @@ const Tags = __nccwpck_require__(800)
         const { owner, repo } = github.context.repo
         core.info(`owner: "${owner}"`)
         core.info(`repo: "${repo}"`)
+        core.endGroup() // Inputs
+
         const sha = github.context.sha
-        core.info(`sha: "${sha}"`)
+        core.info(`Target sha: \u001b[32m${sha}`)
 
         const tags = new Tags(token, owner, repo)
 
         // Action
-        core.info(`⌛ Processing tag: "${tag}"`)
+        // core.info(`⌛ Processing tag: "${tag}"`)
+        core.startGroup(`Processing tag: "${tag}"`)
         let result
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
@@ -31932,6 +31935,7 @@ const Tags = __nccwpck_require__(800)
             await tags.createRef(tag, sha)
             result = 'Created'
         }
+        core.endGroup() // Processing
 
         // Outputs
         core.info('📩 Setting Outputs')
@@ -31940,26 +31944,29 @@ const Tags = __nccwpck_require__(800)
         // Summary
         if (summary) {
             core.info('📝 Writing Job Summary')
-            const inputs_table = gen_inputs_table({
-                tag: tag,
-                summary: summary,
-            })
-            core.summary.addRaw('### JS Test Action', true)
+
+            core.summary.addRaw('## JS Test Action\n')
             core.summary.addRaw(
-                `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\``,
-                true
+                `${result}: [${tag}](https://github.com/${owner}/${repo}/releases/tag/${tag}) :arrow_right: \`${sha}\`\n`
             )
-            core.summary.addRaw(inputs_table, true)
+
+            core.summary.addRaw('<details><summary>Inputs</summary>')
+            core.summary.addTable([
+                [
+                    { data: 'Input', header: true },
+                    { data: 'Value', header: true },
+                ],
+                [{ data: 'tag' }, { data: `<code>${tag}</code>` }],
+                [{ data: 'summary' }, { data: `<code>${summary}</code>` }],
+            ])
+            core.summary.addRaw('</details>\n')
+
+            const text = 'View Documentation, Report Issues or Request Features'
+            const link = 'https://github.com/smashedr/js-test-action'
             core.summary.addRaw(
-                '\n[View Documentation](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) | '
-            )
-            core.summary.addRaw(
-                '[Report an issue or request a feature](https://github.com/smashedr/js-test-action/issues)',
-                true
+                `\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`
             )
             await core.summary.write()
-        } else {
-            core.info('⏩ Skipping Job Summary')
         }
 
         core.info(`✅ \u001b[32;1mFinished Success`)
@@ -31969,23 +31976,6 @@ const Tags = __nccwpck_require__(800)
         core.setFailed(e.message)
     }
 })()
-
-/**
- * @function gen_inputs_table
- * @param {Object} inputs
- * @return String
- */
-function gen_inputs_table(inputs) {
-    const table = [
-        '<details><summary>Inputs</summary>',
-        '<table><tr><th>Input</th><th>Value</th></tr>',
-    ]
-    for (const [key, object] of Object.entries(inputs)) {
-        const value = object.toString() || '-'
-        table.push(`<tr><td>${key}</td><td>${value}</td></tr>`)
-    }
-    return table.join('') + '</table></details>'
-}
 
 module.exports = __webpack_exports__;
 /******/ })()
