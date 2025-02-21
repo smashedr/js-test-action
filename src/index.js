@@ -12,6 +12,7 @@ const Tags = require('./tags')
         // console.log('process.env:', process.env)
 
         // Inputs
+        core.startGroup('Inputs')
         const tag = core.getInput('tag', { required: true })
         core.info(`tag: "${tag}"`)
         const summary = core.getBooleanInput('summary', { required: true })
@@ -23,13 +24,16 @@ const Tags = require('./tags')
         const { owner, repo } = github.context.repo
         core.info(`owner: "${owner}"`)
         core.info(`repo: "${repo}"`)
+        core.endGroup() // Inputs
+
         const sha = github.context.sha
-        core.info(`sha: "${sha}"`)
+        core.info(`Target sha: \u001b[32m${sha}`)
 
         const tags = new Tags(token, owner, repo)
 
         // Action
-        core.info(`⌛ Processing tag: "${tag}"`)
+        // core.info(`⌛ Processing tag: "${tag}"`)
+        core.startGroup(`⌛ Processing tag: "${tag}"`)
         let result
         const reference = await tags.getRef(tag)
         // console.log('reference.data:', reference?.data)
@@ -48,6 +52,7 @@ const Tags = require('./tags')
             await tags.createRef(tag, sha)
             result = 'Created'
         }
+        core.endGroup() // Processing
 
         // Outputs
         core.info('📩 Setting Outputs')
