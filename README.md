@@ -1,5 +1,6 @@
 [![Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&logoColor=white&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
+[![lint](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=github&logoColor=white&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/releases/latest)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&logoColor=white&label=updated)](https://github.com/smashedr/js-test-action/graphs/commit-activity)
@@ -23,13 +24,13 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| input   | required | default               | description                 |
-| ------- | -------- | --------------------- | --------------------------- |
-| tag     | No       | test                  | Tag to Create or Update     |
-| summary | No       | true                  | Add Summary to Job          |
-| token   | No       | `${{ github.token }}` | Only if External Token [^1] |
+| input   | required | default               | description             |
+| ------- | :------: | --------------------- | ----------------------- |
+| tag     |    -     | `test`                | Tag to Create or Update |
+| summary |    -     | `true`                | Add Summary to Job      |
+| token   |    -     | `${{ github.token }}` | Only for PAT [^1]       |
 
-<details><summary>📜 View Example Job Summary</summary>
+<details><summary>👀 View Example Job Summary</summary>
 
 ---
 
