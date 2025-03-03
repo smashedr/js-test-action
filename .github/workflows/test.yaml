@@ -34,8 +34,7 @@ jobs:
         with:
           tag: "test"
 
-      - name: "Validate Outputs"
-        id: validate
+      - name: "Verify Outputs"
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
           if [ -z '${{ steps.test.outputs.sha }}' ];then
@@ -44,7 +43,7 @@ jobs:
           fi
 
       - name: "Schedule Failure Notification"
+        if: ${{ always() && failure() && github.event_name == 'schedule' }}
         uses: sarisia/actions-status-discord@v1
-        if: ${{ always() && github.event_name == 'schedule' && steps.validate.outcome == 'failure' }}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
