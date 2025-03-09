@@ -29,9 +29,11 @@ jobs:
         run: |
           tag=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i ^location: | sed -E 's#.*/tag/v(.*)#\1#')
           echo "tag: ${tag}"
+
           url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag//[$'\t\r\n']}_linux_amd64.tar.gz"
           echo "url: ${url}"
-          curl -L "${url}" | tar xvz -C "${RUNNER_TEMP}" actionlint
-          ls "${RUNNER_TEMP}"
-          file "${RUNNER_TEMP}/actionslint"
-          "${RUNNER_TEMP}/actionslint" -color
+
+          curl -sL "${url}" | tar xvz -C "${RUNNER_TEMP}" actionlint
+          file "${RUNNER_TEMP}/actionlint"
+
+          "${RUNNER_TEMP}/actionlint" -color
