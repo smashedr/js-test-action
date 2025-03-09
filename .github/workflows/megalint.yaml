@@ -3,19 +3,7 @@ name: "MegaLinter"
 
 on:
   push:
-  #  branches: [master]
-  pull_request:
-
-#env:
-#  # When active, APPLY_FIXES must also be defined as environment variable
-#  # (in github/workflows/mega-linter.yml or other CI tool)
-#  APPLY_FIXES: all
-#  # Decide which event triggers application of fixes in a commit or a PR
-#  # (pull_request, push, all)
-#  APPLY_FIXES_EVENT: pull_request
-#  # If APPLY_FIXES is used, defines if the fixes are directly committed (commit)
-#  # or posted in a PR (pull_request)
-#  APPLY_FIXES_MODE: commit
+  #pull_request:
 
 concurrency:
   group: megalinter
@@ -33,35 +21,14 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout Code
+      - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: MegaLinter
-        uses: oxsecurity/megalinter@v8
-        id: ml
-        # All available variables are described in documentation
-        # https://megalinter.io/latest/configuration/
-        env:
-          # Validates all source when push on main, else just the git diff with
-          # main. Override with true if you always want to lint all sources
-          #
-          # To validate the entire codebase, set to:
-          VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Download actionlint"
+        id: get_actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
 
-          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE
-          # .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-
-          # Uncomment to disable copy-paste and spell checks
-          # DISABLE: COPYPASTE,SPELL
-
-      # Upload MegaLinter artifacts
-      - name: Archive production artifacts
-        if: success() || failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: MegaLinter reports
-          include-hidden-files: "true"
-          path: |
-            megalinter-reports
-            mega-linter.log
+      - name: "Check workflow files"
+        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        shell: bash test
