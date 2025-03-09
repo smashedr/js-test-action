@@ -40,8 +40,8 @@ jobs:
       - name: "Actionlint"
         if: ${{ always() }}
         run: |
-          tag=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i ^location: | sed -E 's#.*/tag/v(.*)#\1#')
-          echo "tag: ${tag//[$'\t\r\n']"
+          tag=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i '^location:' | sed -E 's#.*/tag/v(.*)#\1#')
+          echo "tag: ${tag//[$'\t\r\n']}"
           url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag//[$'\t\r\n']}_linux_amd64.tar.gz"
           echo "url: ${url}"
           curl -sL "${url}" | tar xvz -C "${RUNNER_TEMP}" actionlint
