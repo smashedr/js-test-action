@@ -24,10 +24,13 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
 
-      - name: "Download actionlint"
+      - name: "Actionlint"
         id: get_actionlint
-        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-        shell: bash
-
-      - name: "Check workflow files"
-        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        run: |
+          tag=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i ^location: | sed -E 's#.*/tag/v(.*)#\1#')
+          echo "tag: ${tag}"
+          url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag//[$'\t\r\n']}_linux_amd64.tar.gz"
+          echo "url: ${url}"
+          curl -sL "${url}" | tar xvz -C "/tmp" actionlint
+          file /tmp/actionslint
+          /tmp/actionslint -color
