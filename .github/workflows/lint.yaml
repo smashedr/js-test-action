@@ -35,7 +35,7 @@ jobs:
       - name: "Prettier"
         if: ${{ always() }}
         run: |
-          npm run prettier
+          npm run prettier:check
 
       - name: "Actionlint"
         if: ${{ always() }}
