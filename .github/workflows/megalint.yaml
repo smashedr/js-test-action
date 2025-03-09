@@ -31,6 +31,7 @@ jobs:
           echo "tag: ${tag}"
           url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag//[$'\t\r\n']}_linux_amd64.tar.gz"
           echo "url: ${url}"
-          curl -sL "${url}" | tar xvz -C "${RUNNER_TEMP}" actionlint
+          curl -L "${url}" | tar xvz -C "${RUNNER_TEMP}" actionlint
+          ls "${RUNNER_TEMP}"
           file "${RUNNER_TEMP}/actionslint"
           "${RUNNER_TEMP}/actionslint" -color
