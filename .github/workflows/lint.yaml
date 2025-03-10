@@ -45,10 +45,6 @@ jobs:
           echo "::endgroup::"
           yamllint -d '{extends: relaxed, ignore: [node_modules/]}' .
 
-      #- name: "Vale"
-      #  if: ${{ always() && !cancelled() }}
-      #  uses: errata-ai/vale-action@v2.1.1
-
       - name: "Actionlint"
         if: ${{ always() && !cancelled() }}
         run: |
@@ -59,9 +55,13 @@ jobs:
           echo "url: ${url}"
           curl -sL "${url}" | tar xz -C "${RUNNER_TEMP}" actionlint
           file "${RUNNER_TEMP}/actionlint"
-          echo "::endgroup::"
           "${RUNNER_TEMP}/actionlint" --version
+          echo "::endgroup::"
           "${RUNNER_TEMP}/actionlint" -color -verbose -shellcheck= -pyflakes=
+
+      #- name: "Vale"
+      #  if: ${{ always() && !cancelled() }}
+      #  uses: errata-ai/vale-action@v2.1.1
 
   build:
     name: "Build"
@@ -72,10 +72,10 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Setup Node 20"
+      - name: "Setup Node 22"
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           #cache: npm
 
       - name: "Install"
