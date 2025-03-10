@@ -37,13 +37,15 @@ jobs:
         run: |
           npm run prettier:check
 
-      - name: "yamllint"
+      - name: "Yamllint"
         if: ${{ always() && !cancelled() }}
+        env:
+          CONFIG: "{extends: relaxed, ignore: [node_modules/], rules: {line-length: {max: 119}}}"
         run: |
           echo "::group::List Files"
-          yamllint -d '{extends: relaxed, ignore: [node_modules/]}' --list-files .
+          yamllint -d '${{ env.CONFIG }}' --list-files .
           echo "::endgroup::"
-          yamllint -d '{extends: relaxed, ignore: [node_modules/]}' .
+          yamllint -d '${{ env.CONFIG }}' .
 
       - name: "Actionlint"
         if: ${{ always() && !cancelled() }}
