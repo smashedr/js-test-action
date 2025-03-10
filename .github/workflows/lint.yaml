@@ -40,7 +40,7 @@ jobs:
       - name: "yamllint"
         if: ${{ always() && !cancelled() }}
         run: |
-          yamllint -d '{extends: relaxed, ignore: [node_modules/]}' .
+          yamllint -d relaxed .
 
       #- name: "Vale"
       #  if: ${{ always() }}
