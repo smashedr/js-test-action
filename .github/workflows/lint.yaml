@@ -37,6 +37,11 @@ jobs:
         run: |
           npm run prettier:check
 
+      - name: "yamllint"
+        if: ${{ always() && !cancelled() }}
+        run: |
+          yamllint -d '{extends: relaxed, ignore: [node_modules/]}' .
+
       #- name: "Vale"
       #  if: ${{ always() }}
       #  uses: errata-ai/vale-action@v2.1.1
