@@ -106,3 +106,8 @@ jobs:
             echo "Build was not run, run: npm build"
             exit 1
           fi
+
+      - name: "Verify Failed"
+        if: ${{ failure() && github.event_name == 'pull_request' }}
+        run: |
+          echo "Comment on PR: run 'npm run build' and commit dist/"
