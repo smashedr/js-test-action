@@ -91,6 +91,12 @@ jobs:
         run: |
           cat "${GITHUB_EVENT_PATH}"
 
+      - name: "Debug"
+        run: |
+          echo "github.actor: ${{ github.actor }}"
+          echo "github.triggering_actor: ${{ github.triggering_actor }}"
+          echo "github.event.pull_request.head.user.login: ${{ github.event.pull_request.head.user.login }}"
+
       - name: "Setup Node 22"
         uses: actions/setup-node@v4
         with:
@@ -109,11 +115,11 @@ jobs:
         run: |
           git status --porcelain dist/
           if [ ! -d "dist" ];then
-            echo "Missing dist directory, run 'npm build' then add and commit the 'dist' folder."
+            echo "Missing dist directory; run 'npm run build' then add, commit and push the 'dist' folder."
             exit 1
           fi
           if [ -n "$(git status --porcelain dist)" ];then
-            echo "Build was not run, run 'npm build' then add and commit the 'dist' folder."
+            echo "Build was not run; run 'npm run build' then add, commit and push the 'dist' folder."
             exit 1
           fi
 
@@ -123,11 +129,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Adding comment to PR number: ${{ github.event.number }}"
-          echo "pull_request: ${{ github.event.pull_request }}"
-          echo "pull_request.head: ${{ github.event.pull_request.head }}"
-          echo "pull_request.head.user: ${{ github.event.pull_request.head.user }}"
-          echo "pull_request.head.user.login: ${{ github.event.pull_request.head.user.login }}"
-          echo "head.user.login: ${{ github.event.head.user.login }}"
-          comment='@${{ github.actor }} - run `npm build` then add and commit the `dist` folder.'
+          comment='@${{ github.triggering_actor }} - run `npm run build` then add, commit and push the `dist` folder.'
           echo "${comment}"
           gh pr comment ${{ github.event.number }} --body "${comment}"
