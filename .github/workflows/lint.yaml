@@ -124,7 +124,7 @@ jobs:
           fi
 
       - name: "Verify Failed"
-        #if: ${{ failure() && github.event_name == 'pull_request' }}
+        if: ${{ failure() && github.event_name == 'pull_request' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
