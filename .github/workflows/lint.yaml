@@ -109,11 +109,11 @@ jobs:
         run: |
           git status --porcelain dist/
           if [ ! -d "dist" ];then
-            echo "Missing dist directory, run: npm build"
+            echo "Missing dist directory, run 'npm build' then add and commit the 'dist' folder."
             exit 1
           fi
           if [ -n "$(git status --porcelain dist)" ];then
-            echo "Build was not run, run: npm build"
+            echo "Build was not run, run 'npm build' then add and commit the 'dist' folder."
             exit 1
           fi
 
@@ -122,6 +122,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo number: ${{ github.event.number }} 
-          gh pr comment ${{ github.event.number }} --body "Jarvis was Here"
-          #gh pr comment "${PR_NUMBER}" --edit-last --body-file /tmp/body
+          echo "Adding comment to PR number: ${{ github.event.number }}"
+          comment='@${{ github.event.user.login }} - run `npm build` then add and commit the `dist` folder.'
+          echo "${comment}"
+          gh pr comment ${{ github.event.number }} --body "${comment}"
