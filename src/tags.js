@@ -8,7 +8,7 @@ class Tags {
     }
 
     async getRef(tag) {
-        console.log(`getRef: tags/${tag}`)
+        console.debug(`getRef: tags/${tag}`)
         try {
             return await this.octokit.rest.git.getRef({
                 owner: this.owner,
@@ -24,7 +24,7 @@ class Tags {
     }
 
     async createRef(tag, sha) {
-        console.log(`createRef: refs/tags/${tag}`, sha)
+        console.debug(`createRef: refs/tags/${tag}`, sha)
         return await this.octokit.rest.git.createRef({
             owner: this.owner,
             repo: this.repo,
@@ -34,7 +34,7 @@ class Tags {
     }
 
     async updateRef(tag, sha, force = false) {
-        console.log(`updateRef: tags/${tag}`, sha, force)
+        console.debug(`updateRef: tags/${tag}`, sha, force)
         await this.octokit.rest.git.updateRef({
             owner: this.owner,
             repo: this.repo,

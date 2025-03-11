@@ -16,18 +16,18 @@ const Tags = require('./tags')
         core.endGroup() // Debug process.env
 
         // Process Inputs
-        const inputs = parseInputs()
+        const inputs = getInputs()
         core.startGroup('Parsed Inputs')
         console.log(inputs)
         core.endGroup() // Inputs
 
         // Context
         const { owner, repo } = github.context.repo
-        core.info(`owner: "${owner}"`)
-        core.info(`repo: "${repo}"`)
+        core.info(`owner: ${owner}`)
+        core.info(`repo: ${repo}`)
 
         const sha = github.context.sha
-        core.info(`Target sha: \u001b[32m${sha}`)
+        core.info(`Target sha: \u001b[33;1m${sha}`)
 
         const tags = new Tags(inputs.token, owner, repo)
 
@@ -74,10 +74,10 @@ const Tags = require('./tags')
 })()
 
 /**
- * Get inputs
+ * Get Inputs
  * @return {{tag: string, summary: boolean, token: string}}
  */
-function parseInputs() {
+function getInputs() {
     return {
         tag: core.getInput('tag', { required: true }),
         summary: core.getBooleanInput('summary'),
@@ -86,10 +86,11 @@ function parseInputs() {
 }
 
 /**
- * Get inputs
+ * Add Summary
  * @param {Object} inputs
  * @param {String} result
  * @param {String} sha
+ * @return {Promise<void>}
  */
 async function addSummary(inputs, result, sha) {
     core.summary.addRaw('## JS Test Action\n')
