@@ -1,5 +1,5 @@
 [![Tags](https://img.shields.io/badge/tags-v1_%7C_v1.0-blue?logo=git&logoColor=white)](https://github.com/smashedr/js-test-action/tags)
-[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=github&label=latest)](https://github.com/smashedr/js-test-action/releases/latest)
+[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=git&logoColor=white&label=latest)](https://github.com/smashedr/js-test-action/releases/latest)
 [![Release WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
 [![Test WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
 [![lint WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
