@@ -123,6 +123,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Adding comment to PR number: ${{ github.event.number }}"
-          comment='@${{ github.event.user.login }} - run `npm build` then add and commit the `dist` folder.'
+          echo "pull_request: ${{ github.event.pull_request }}"
+          echo "pull_request.head: ${{ github.event.pull_request.head }}"
+          echo "pull_request.head.user: ${{ github.event.pull_request.head.user }}"
+          echo "pull_request.head.user.login: ${{ github.event.pull_request.head.user.login }}"
+          echo "head.user.login: ${{ github.event.head.user.login }}"
+          comment='@${{ github.actor }} - run `npm build` then add and commit the `dist` folder.'
           echo "${comment}"
           gh pr comment ${{ github.event.number }} --body "${comment}"
