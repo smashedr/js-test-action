@@ -25,7 +25,6 @@ const Tags = require('./tags')
         const { owner, repo } = github.context.repo
         core.info(`owner: "${owner}"`)
         core.info(`repo: "${repo}"`)
-        core.endGroup() // Context
 
         const sha = github.context.sha
         core.info(`Target sha: \u001b[32m${sha}`)

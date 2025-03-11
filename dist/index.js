@@ -31908,7 +31908,6 @@ const Tags = __nccwpck_require__(800)
         const { owner, repo } = github.context.repo
         core.info(`owner: "${owner}"`)
         core.info(`repo: "${repo}"`)
-        core.endGroup() // Context
 
         const sha = github.context.sha
         core.info(`Target sha: \u001b[32m${sha}`)
