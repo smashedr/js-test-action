@@ -9,10 +9,10 @@ const Tags = require('./tags')
 
         // Debug
         core.startGroup('Debug: github.context')
-        console.log('github.context:', github.context)
+        console.log(github.context)
         core.endGroup() // Debug github.context
         core.startGroup('Debug: process.env')
-        console.log('process.env:', process.env)
+        console.log(process.env)
         core.endGroup() // Debug process.env
 
         // Process Inputs
@@ -25,7 +25,7 @@ const Tags = require('./tags')
         const { owner, repo } = github.context.repo
         core.info(`owner: "${owner}"`)
         core.info(`repo: "${repo}"`)
-        core.endGroup() // Inputs
+        core.endGroup() // Context
 
         const sha = github.context.sha
         core.info(`Target sha: \u001b[32m${sha}`)
@@ -33,7 +33,6 @@ const Tags = require('./tags')
         const tags = new Tags(inputs.token, owner, repo)
 
         // Action
-        // core.info(`⌛ Processing tag: "${tag}"`)
         core.startGroup(`Processing tag: "${inputs.tag}"`)
         let result
         const reference = await tags.getRef(inputs.tag)
@@ -95,8 +94,9 @@ function parseInputs() {
  */
 async function addSummary(inputs, result, sha) {
     core.summary.addRaw('## JS Test Action\n')
+    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${inputs.tag}`
     core.summary.addRaw(
-        `${result}: [${inputs.tag}](https://github.com/${owner}/${repo}/releases/tag/${inputs.tag}) :arrow_right: \`${sha}\`\n`
+        `${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`
     )
 
     delete inputs.token
