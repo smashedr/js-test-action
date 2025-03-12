@@ -7,6 +7,7 @@
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx)](https://github.com/smashedr/js-test-action)
+[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/js-test-action)](https://github.com/smashedr/js-test-action/discussions)
 [![GitHub Forks](https://img.shields.io/github/forks/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/forks)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
@@ -18,6 +19,7 @@
   - [Permissions](#Permissions)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
+- [Tags](#Tags)
 - [Development](#Development)
 
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
@@ -47,14 +49,14 @@ Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :a
 With no inputs this will create/update the tag `test`.
 
 ```yaml
-- name: 'JS Test Action'
+- name: 'JavaScript Test Action'
   uses: smashedr/js-test-action@master
 ```
 
 With all inputs. Note that `token` is NOT required.
 
 ```yaml
-- name: 'JS Test Action'
+- name: 'JavaScript Test Action'
   uses: smashedr/js-test-action@master
   with:
     tag: test
@@ -71,6 +73,10 @@ permissions:
   contents: write
 ```
 
+Permissions documentation for
+[Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)
+and [Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication).
+
 ## Outputs
 
 | output | description |
@@ -78,7 +84,7 @@ permissions:
 | sha    | Tag Hash    |
 
 ```yaml
-- name: 'JS Test Action'
+- name: 'JavaScript Test Action'
   id: test
   uses: smashedr/js-test-action@master
 
@@ -108,7 +114,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
 
-      - name: 'JS Test Action'
+      - name: 'JavaScript Test Action'
         id: test
         uses: smashedr/js-test-action@master
 
@@ -116,6 +122,23 @@ jobs:
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
 ```
+
+For more examples, you can check out other projects using this action:  
+https://github.com/smashedr/js-test-action/network/dependents
+
+## Tags
+
+The following [rolling tags](https://github.com/smashedr/js-test-action/tags) are maintained.
+
+| Tag      | Example  | Bugs | Feat. | Description                            |
+| -------- | -------- | :--: | :---: | -------------------------------------- |
+| `vN`     | `v1`     |  ✅  |  ✅   | Points to latest `vN.x.x` release.     |
+| `vN.N`   | `v1.0`   |  ✅  |  ❌   | Points to latest `vN.N.x` release.     |
+| `vN.N.N` | `v1.0.0` |  ❌  |  ❌   | Points directly to a specific release. |
+
+**Important:** Make sure to use one of the [latest tags](https://github.com/smashedr/js-test-action/tags).
+
+You can view the release notes for each version on the [Releases Page](https://github.com/smashedr/js-test-action/releases).
 
 # Development
 
@@ -132,7 +155,7 @@ The heart of a GitHub Action is the [action.yml](action.yml) file. This describe
 
 - https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions
 
-JS Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
+JavaScript Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
 
 ## Actions Toolkit
 

@@ -31888,7 +31888,7 @@ const Tags = __nccwpck_require__(800)
 
 ;(async () => {
     try {
-        core.info(`🏳️ Starting JS Test Action`)
+        core.info(`🏳️ Starting JavaScript Test Action`)
 
         // Debug
         core.startGroup('Debug: github.context')
@@ -31976,7 +31976,7 @@ function getInputs() {
  * @return {Promise<void>}
  */
 async function addSummary(inputs, result, sha) {
-    core.summary.addRaw('## JS Test Action\n')
+    core.summary.addRaw('## JavaScript Test Action\n')
     const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${inputs.tag}`
     core.summary.addRaw(
         `${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`
