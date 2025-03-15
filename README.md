@@ -31,11 +31,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input     | Req. | Default&nbsp;Value    | Description             |
-| :-------- | :--: | :-------------------- | :---------------------- |
-| `tag`     |  -   | `test`                | Tag to Create or Update |
-| `summary` |  -   | `true`                | Add Summary to Job      |
-| `token`   |  -   | `${{ github.token }}` | Only for PAT [^1]       |
+| Input     | Req. | Default&nbsp;Value&nbsp;Used | Description&nbsp;of&nbsp;Input |
+| :-------- | :--: | :--------------------------- | :----------------------------- |
+| `tag`     |  -   | `test`                       | Tag to Create or Update        |
+| `summary` |  -   | `true`                       | Add Summary to Job             |
+| `token`   |  -   | `${{ github.token }}`        | Only for PAT [^1]              |
 
 <details><summary>👀 View Example Job Summary</summary>
 
