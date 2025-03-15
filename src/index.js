@@ -21,15 +21,10 @@ const Tags = require('./tags')
         console.log(config)
         core.endGroup() // Config
 
-        // Context
-        const { owner, repo } = github.context.repo
-        core.info(`owner: ${owner}`)
-        core.info(`repo: ${repo}`)
-
+        // Set Variables
+        const tags = new Tags(config.token, config.owner, config.repo)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
-
-        const tags = new Tags(config.token, owner, repo)
 
         // Action
         core.startGroup(`Processing tag: "${config.tag}"`)
@@ -62,7 +57,12 @@ const Tags = require('./tags')
         // Summary
         if (config.summary) {
             core.info('📝 Writing Job Summary')
-            await addSummary(config, result, sha)
+            try {
+                await addSummary(config, result, sha)
+            } catch (e) {
+                console.log(e)
+                core.error(`Error writing Job Summary ${e.message}`)
+            }
         }
 
         core.info(`✅ \u001b[32;1mFinished Success`)
@@ -75,13 +75,15 @@ const Tags = require('./tags')
 
 /**
  * Get Config
- * @return {{tag: string, summary: boolean, token: string}}
+ * @return {{tag: string, summary: boolean, token: string, owner: string, repo: string}}
  */
 function getConfig() {
     return {
         tag: core.getInput('tag', { required: true }),
         summary: core.getBooleanInput('summary'),
         token: core.getInput('token', { required: true }),
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
     }
 }
 
