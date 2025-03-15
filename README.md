@@ -1,9 +1,9 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases/latest)
-[![Release WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
-[![Test WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
-[![lint WF](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
+[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
+[![Workflow lint](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
@@ -21,6 +21,8 @@
 - [Outputs](#Outputs)
 - [Examples](#Examples)
 - [Tags](#Tags)
+- [Support](#Support)
+- [Contributing](#Contributing)
 - [Development](#Development)
 
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
@@ -29,11 +31,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input   | Required | Default               | Description             |
-| :------ | :------: | :-------------------- | :---------------------- |
-| tag     |    -     | `test`                | Tag to Create or Update |
-| summary |    -     | `true`                | Add Summary to Job      |
-| token   |    -     | `${{ github.token }}` | Only for PAT [^1]       |
+| Input     | Req. | Default&nbsp;Value | Short&nbsp;Description&nbsp;of&nbsp;Input |
+| :-------- | :--: | :----------------- | :---------------------------------------- |
+| `tag`     |  -   | `test`             | Tag to Create or Update                   |
+| `summary` |  -   | `true`             | Add Summary to Job                        |
+| `token`   |  -   | `github.token`     | Only for PAT [^1]                         |
 
 <details><summary>👀 View Example Job Summary</summary>
 
@@ -82,7 +84,7 @@ and [Actions](https://docs.github.com/en/actions/security-for-github-actions/sec
 
 | Output | Description |
 | :----- | :---------- |
-| sha    | Tag Hash    |
+| `sha`  | Tag Hash    |
 
 ```yaml
 - name: 'JavaScript Test Action'
@@ -131,60 +133,53 @@ https://github.com/smashedr/js-test-action/network/dependents
 
 The following rolling [tags](https://github.com/smashedr/js-test-action/tags) are maintained.
 
-| Tag                                                                                                                                                                                                                       | Example  | Target   | Bugs | Feat. | Description                                               |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------- | :--: | :---: | :-------------------------------------------------------- |
-| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=limegreen)](https://github.com/smashedr/js-test-action/releases/latest)     | `vN`     | `vN.x.x` |  ✅  |  ✅   | Includes new features but is always backwards compatible. |
-| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=yellowgreen)](https://github.com/smashedr/js-test-action/releases/latest) | `vN.N`   | `vN.N.x` |  ✅  |  ❌   | Only receives bug fixes. This is the most stable tag.     |
-| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/js-test-action?style=for-the-badge&label=%20&color=orange)](https://github.com/smashedr/js-test-action/releases/latest)                               | `vN.N.N` | `vN.N.N` |  ❌  |  ❌   | Not a rolling tag. **Not** recommended.                   |
+| Version&nbsp;Tag                                                                                                                                                                                                   | Rolling | Bugs | Feat. | Target   | Example  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :------- | :------- |
+| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ✅   | `vN.x.x` | `vN`     |
+| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ❌   | `vN.N.x` | `vN.N`   |
+| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/js-test-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/js-test-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | `vN.N.N` | `vN.N.N` |
 
 You can view the release notes for each version on the [releases](https://github.com/smashedr/js-test-action/releases) page.
 
+# Support
+
+For general help or to request a feature, see:
+
+- Q&A Discussion: https://github.com/cssnr/portainer-stack-deploy-action/discussions/categories/q-a
+- Request a Feature: https://github.com/cssnr/portainer-stack-deploy-action/discussions/categories/feature-requests
+
+If you are experiencing an issue/bug or getting unexpected results, you can:
+
+- Report an Issue: https://github.com/cssnr/portainer-stack-deploy-action/issues
+- Chat with us on Discord: https://discord.gg/wXy6m2X8wY
+- Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Portainer%20Stack%20Deploy)
+
+For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.github/blob/master/.github/SUPPORT.md#support).
+
+# Contributing
+
+Currently, the best way to contribute to this project is to star this project on GitHub.
+
+For more information, see the CSSNR [CONTRIBUTING.md](https://github.com/cssnr/.github/blob/master/.github/CONTRIBUTING.md#contributing).
+
+Additionally, you can support other GitHub Actions I have published:
+
+- [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
+- [Portainer Stack Deploy](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
+- [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
+- [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
+- [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)
+- [Update JSON Value Action](https://github.com/cssnr/update-json-value-action?tab=readme-ov-file#readme)
+- [Parse Issue Form Action](https://github.com/cssnr/parse-issue-form-action?tab=readme-ov-file#readme)
+- [Cloudflare Purge Cache Action](https://github.com/cssnr/cloudflare-purge-cache-action?tab=readme-ov-file#readme)
+- [Mozilla Addon Update Action](https://github.com/cssnr/mozilla-addon-update-action?tab=readme-ov-file#readme)
+- [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
+
+For a full list of current projects to support visit: [https://cssnr.github.io/](https://cssnr.github.io/)
+
 # Development
 
-A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
-
-## Actions Overview
-
-This is a JavaScript Action. For other types see:
-
-- TypeScript: https://github.com/smashedr/ts-test-action
-- Docker/Python: https://github.com/smashedr/py-test-action
-
-The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
-
-- https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions
-
-JavaScript Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
-
-## Actions Toolkit
-
-The toolkit contains many parts. The `@actions/core` is required and this action uses the `@actions/github` module.
-
-- https://github.com/actions/toolkit
-
-This also uses `github.getOctokit`.
-
-- https://octokit.github.io/rest.js
-
-## Local Development
-
-To run actions locally you need to install act: https://nektosact.com/installation/index.html
-
-```shell
-npm install
-npm run build:watch
-act -j test
-```
-
-Alternatively, to run from source, change `main` in [action.yml](action.yml) to `src/index.js` and
-run: `act -j test --use-gitignore=false`
-
-For advanced using with things like secrets, variables and context see: https://nektosact.com/usage/index.html
-
-You should also review the options from `act --help`
-
-Note, the `.env`, `.secrets` and `.vars` files are automatically sourced with no extra options.
-To source `event.json` you need to run act with `act -e event.json`
+Development instructions have been moved to the [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
