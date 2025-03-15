@@ -25,6 +25,8 @@
 - [Contributing](#Contributing)
 - [Development](#Development)
 
+JavaScript Test Action Template
+
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
 
 This includes inputs, outputs, job summary, and automatic token authentication.
