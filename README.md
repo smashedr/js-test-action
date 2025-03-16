@@ -33,11 +33,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input     | Req. | Default&nbsp;Value | Short&nbsp;Description&nbsp;of&nbsp;Input |
-| :-------- | :--: | :----------------- | :---------------------------------------- |
-| `tag`     |  -   | `test`             | Tag to Create or Update                   |
-| `summary` |  -   | `true`             | Add Summary to Job                        |
-| `token`   |  -   | `github.token`     | Only for PAT [^1]                         |
+| Input   | Req. | Default&nbsp;Value | Input&nbsp;Description  |
+| :------ | :--: | :----------------- | :---------------------- |
+| tag     |  -   | `test`             | Tag to Create or Update |
+| summary |  -   | `true`             | Add Summary to Job      |
+| token   |  -   | `github.token`     | Only for PAT [^1]       |
 
 <details><summary>👀 View Example Job Summary</summary>
 
@@ -86,7 +86,7 @@ and [Actions](https://docs.github.com/en/actions/security-for-github-actions/sec
 
 | Output | Description |
 | :----- | :---------- |
-| `sha`  | Tag Hash    |
+| sha    | Tag Hash    |
 
 ```yaml
 - name: 'JavaScript Test Action'
@@ -135,13 +135,16 @@ https://github.com/smashedr/js-test-action/network/dependents
 
 The following rolling [tags](https://github.com/smashedr/js-test-action/tags) are maintained.
 
-| Version&nbsp;Tag                                                                                                                                                                                                   | Rolling | Bugs | Feat. | Target   | Example  |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :------- | :------- |
-| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ✅   | `vN.x.x` | `vN`     |
-| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ❌   | `vN.N.x` | `vN.N`   |
-| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/js-test-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/js-test-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | `vN.N.N` | `vN.N.N` |
+| Version&nbsp;Tag                                                                                                                                                                                                   | Rolling | Bugs | Feat. |   Name    |  Target  | Example  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :-------: | :------: | :------- |
+| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ✅   | **Major** | `vN.x.x` | `vN`     |
+| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ❌   | **Minor** | `vN.N.x` | `vN.N`   |
+| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/js-test-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/js-test-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | **Micro** | `vN.N.N` | `vN.N.N` |
 
 You can view the release notes for each version on the [releases](https://github.com/smashedr/js-test-action/releases) page.
+
+The **Major** tag is recommended. It is the most up-to-date and always backwards compatible.
+Breaking changes would result in a **Major** version bump. At a minimum you should use a **Minor** tag.
 
 # Support
 
