@@ -74,20 +74,6 @@ const Tags = require('./tags')
 })()
 
 /**
- * Get Config
- * @return {{tag: string, summary: boolean, token: string, owner: string, repo: string}}
- */
-function getConfig() {
-    return {
-        tag: core.getInput('tag', { required: true }),
-        summary: core.getBooleanInput('summary'),
-        token: core.getInput('token', { required: true }),
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
-    }
-}
-
-/**
  * Add Summary
  * @param {Object} config
  * @param {String} result
@@ -138,3 +124,17 @@ async function addSummary(config, result, sha) {
 //     }
 //     return input
 // }
+
+/**
+ * Get Config
+ * @return {{tag: string, summary: boolean, token: string, owner: string, repo: string}}
+ */
+function getConfig() {
+    return {
+        tag: core.getInput('tag', { required: true }),
+        summary: core.getBooleanInput('summary'),
+        token: core.getInput('token', { required: true }),
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+    }
+}
