@@ -31905,7 +31905,11 @@ const Tags = __nccwpck_require__(800)
         core.endGroup() // Config
 
         // Set Variables
-        const tags = new Tags(config.token, config.owner, config.repo)
+        const tags = new Tags(
+            config.token,
+            github.context.repo.owner,
+            github.context.repo.repo
+        )
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 
@@ -31958,7 +31962,7 @@ const Tags = __nccwpck_require__(800)
 
 /**
  * Add Summary
- * @param {Object} config
+ * @param {Config} config
  * @param {String} result
  * @param {String} sha
  * @return {Promise<void>}
@@ -32010,15 +32014,17 @@ async function addSummary(config, result, sha) {
 
 /**
  * Get Config
- * @return {{tag: string, summary: boolean, token: string, owner: string, repo: string}}
+ * @typedef {Object} Config
+ * @property {String} tag
+ * @property {Boolean} summary
+ * @property {String} token
+ * @return {Config}
  */
 function getConfig() {
     return {
         tag: core.getInput('tag', { required: true }),
         summary: core.getBooleanInput('summary'),
         token: core.getInput('token', { required: true }),
-        owner: github.context.repo.owner,
-        repo: github.context.repo.repo,
     }
 }
 

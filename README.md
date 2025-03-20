@@ -59,7 +59,7 @@ With no inputs this will create/update the tag `test`.
   uses: smashedr/js-test-action@master
 ```
 
-With all inputs. Note that `token` is NOT required.
+With all inputs.
 
 ```yaml
 - name: 'JavaScript Test Action'
@@ -100,6 +100,8 @@ and [Actions](https://docs.github.com/en/actions/security-for-github-actions/sec
 ```
 
 ## Examples
+
+💡 _Click on an example heading to expand or collapse the example._
 
 ```yaml
 name: 'Test'
@@ -151,14 +153,14 @@ Breaking changes would result in a **Major** version bump. At a minimum you shou
 
 For general help or to request a feature, see:
 
-- Q&A Discussion: https://github.com/cssnr/portainer-stack-deploy-action/discussions/categories/q-a
-- Request a Feature: https://github.com/cssnr/portainer-stack-deploy-action/discussions/categories/feature-requests
+- Q&A Discussion: https://github.com/smashedr/js-test-action/discussions/categories/q-a
+- Request a Feature: https://github.com/smashedr/js-test-action/discussions/categories/feature-requests
 
 If you are experiencing an issue/bug or getting unexpected results, you can:
 
-- Report an Issue: https://github.com/cssnr/portainer-stack-deploy-action/issues
+- Report an Issue: https://github.com/smashedr/js-test-action/issues
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
-- Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Portainer%20Stack%20Deploy)
+- Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Update%20Release%20Notes)
 
 For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.github/blob/master/.github/SUPPORT.md#support).
 
@@ -180,6 +182,7 @@ Additionally, you can support other GitHub Actions I have published:
 - [Cloudflare Purge Cache Action](https://github.com/cssnr/cloudflare-purge-cache-action?tab=readme-ov-file#readme)
 - [Mozilla Addon Update Action](https://github.com/cssnr/mozilla-addon-update-action?tab=readme-ov-file#readme)
 - [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
+- [Package Changelog Action](https://github.com/cssnr/package-changelog-action?tab=readme-ov-file#readme)
 
 For a full list of current projects to support visit: [https://cssnr.github.io/](https://cssnr.github.io/)
 
