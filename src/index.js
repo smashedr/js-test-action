@@ -15,13 +15,13 @@ const Tags = require('./tags')
         console.log(process.env)
         core.endGroup() // Debug process.env
 
-        // Get Config
+        // Config
         const config = getConfig()
         core.startGroup('Get Config')
         console.log(config)
         core.endGroup() // Config
 
-        // Set Variables
+        // Variables
         const tags = new Tags(config.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
@@ -73,6 +73,30 @@ const Tags = require('./tags')
     }
 })()
 
+// /**
+//  * Get Multiline Input or CSV
+//  * @param {String} name
+//  * @param {Boolean} required
+//  * @param {Boolean} trimWhitespace
+//  * @return {String[]}
+//  */
+// function getMultiCsv(name, required = false, trimWhitespace = true) {
+//     let input = core.getMultilineInput(name, { required, trimWhitespace })
+//     if (input.length === 1 && input[0].includes(',')) {
+//         input = input[0].split(',')
+//     }
+//     if (trimWhitespace) {
+//         input = input.map((item) => item.trim())
+//     }
+//     input = input.filter((i) => {
+//         return i
+//     })
+//     if (!input.length && required) {
+//         throw new Error(`Missing Required Input: ${name}`)
+//     }
+//     return input
+// }
+
 /**
  * Add Summary
  * @param {Config} config
@@ -100,30 +124,6 @@ async function addSummary(config, result, sha) {
     core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`)
     await core.summary.write()
 }
-
-// /**
-//  * Get Multiline Input or CSV
-//  * @param {String} name
-//  * @param {Boolean} required
-//  * @param {Boolean} trimWhitespace
-//  * @return {String[]}
-//  */
-// function getMultiCsv(name, required = false, trimWhitespace = true) {
-//     let input = core.getMultilineInput(name, { required, trimWhitespace })
-//     if (input.length === 1 && input[0].includes(',')) {
-//         input = input[0].split(',')
-//     }
-//     if (trimWhitespace) {
-//         input = input.map((item) => item.trim())
-//     }
-//     input = input.filter((i) => {
-//         return i
-//     })
-//     if (!input.length && required) {
-//         throw new Error(`Missing Required Input: ${name}`)
-//     }
-//     return input
-// }
 
 /**
  * Get Config

@@ -29925,8 +29925,7 @@ class Tags {
      * @param {String} token
      */
     constructor(token) {
-        this.owner = github.context.repo.owner
-        this.repo = github.context.repo.repo
+        this.repo = github.context.repo
         this.octokit = github.getOctokit(token)
     }
 
@@ -29934,8 +29933,7 @@ class Tags {
         console.debug(`getRef: tags/${tag}`)
         try {
             return await this.octokit.rest.git.getRef({
-                owner: this.owner,
-                repo: this.repo,
+                ...this.repo,
                 ref: `tags/${tag}`,
             })
         } catch (e) {
@@ -29949,8 +29947,7 @@ class Tags {
     async createRef(tag, sha) {
         console.debug(`createRef: refs/tags/${tag}`, sha)
         return await this.octokit.rest.git.createRef({
-            owner: this.owner,
-            repo: this.repo,
+            ...this.repo,
             ref: `refs/tags/${tag}`,
             sha,
         })
@@ -29959,8 +29956,7 @@ class Tags {
     async updateRef(tag, sha, force = false) {
         console.debug(`updateRef: tags/${tag}`, sha, force)
         await this.octokit.rest.git.updateRef({
-            owner: this.owner,
-            repo: this.repo,
+            ...this.repo,
             ref: `tags/${tag}`,
             sha,
             force,
@@ -31902,13 +31898,13 @@ const Tags = __nccwpck_require__(800)
         console.log(process.env)
         core.endGroup() // Debug process.env
 
-        // Get Config
+        // Config
         const config = getConfig()
         core.startGroup('Get Config')
         console.log(config)
         core.endGroup() // Config
 
-        // Set Variables
+        // Variables
         const tags = new Tags(config.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
@@ -31960,6 +31956,30 @@ const Tags = __nccwpck_require__(800)
     }
 })()
 
+// /**
+//  * Get Multiline Input or CSV
+//  * @param {String} name
+//  * @param {Boolean} required
+//  * @param {Boolean} trimWhitespace
+//  * @return {String[]}
+//  */
+// function getMultiCsv(name, required = false, trimWhitespace = true) {
+//     let input = core.getMultilineInput(name, { required, trimWhitespace })
+//     if (input.length === 1 && input[0].includes(',')) {
+//         input = input[0].split(',')
+//     }
+//     if (trimWhitespace) {
+//         input = input.map((item) => item.trim())
+//     }
+//     input = input.filter((i) => {
+//         return i
+//     })
+//     if (!input.length && required) {
+//         throw new Error(`Missing Required Input: ${name}`)
+//     }
+//     return input
+// }
+
 /**
  * Add Summary
  * @param {Config} config
@@ -31987,30 +32007,6 @@ async function addSummary(config, result, sha) {
     core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`)
     await core.summary.write()
 }
-
-// /**
-//  * Get Multiline Input or CSV
-//  * @param {String} name
-//  * @param {Boolean} required
-//  * @param {Boolean} trimWhitespace
-//  * @return {String[]}
-//  */
-// function getMultiCsv(name, required = false, trimWhitespace = true) {
-//     let input = core.getMultilineInput(name, { required, trimWhitespace })
-//     if (input.length === 1 && input[0].includes(',')) {
-//         input = input[0].split(',')
-//     }
-//     if (trimWhitespace) {
-//         input = input.map((item) => item.trim())
-//     }
-//     input = input.filter((i) => {
-//         return i
-//     })
-//     if (!input.length && required) {
-//         throw new Error(`Missing Required Input: ${name}`)
-//     }
-//     return input
-// }
 
 /**
  * Get Config
