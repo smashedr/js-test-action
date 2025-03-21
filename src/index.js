@@ -17,7 +17,7 @@ const Tags = require('./tags')
 
         // Config
         const config = getConfig()
-        core.startGroup('Get Config')
+        core.startGroup('Config')
         console.log(config)
         core.endGroup() // Config
 
@@ -26,7 +26,7 @@ const Tags = require('./tags')
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 
-        // Action
+        // Processing
         core.startGroup(`Processing tag: "${config.tag}"`)
         let result
         const reference = await tags.getRef(config.tag)
@@ -106,6 +106,7 @@ const Tags = require('./tags')
  */
 async function addSummary(config, result, sha) {
     core.summary.addRaw('## JavaScript Test Action\n')
+
     const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${config.tag}`
     core.summary.addRaw(
         `${result}: [${config.tag}](${url}) :arrow_right: \`${sha}\`\n`

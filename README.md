@@ -187,7 +187,7 @@ For a full list of current projects to support visit: [https://cssnr.github.io/]
 
 # Development
 
-Development instructions have been moved to the [CONTRIBUTING.md](CONTRIBUTING.md).
+Development instructions have been moved to the local [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
