@@ -1,9 +1,13 @@
 const github = require('@actions/github')
 
 class Tags {
-    constructor(token, owner, repo) {
-        this.owner = owner
-        this.repo = repo
+    /**
+     * Tags
+     * @param {String} token
+     */
+    constructor(token) {
+        this.owner = github.context.repo.owner
+        this.repo = github.context.repo.repo
         this.octokit = github.getOctokit(token)
     }
 

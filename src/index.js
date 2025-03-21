@@ -22,11 +22,7 @@ const Tags = require('./tags')
         core.endGroup() // Config
 
         // Set Variables
-        const tags = new Tags(
-            config.token,
-            github.context.repo.owner,
-            github.context.repo.repo
-        )
+        const tags = new Tags(config.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 

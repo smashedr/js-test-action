@@ -29920,9 +29920,13 @@ function wrappy (fn, cb) {
 const github = __nccwpck_require__(3228)
 
 class Tags {
-    constructor(token, owner, repo) {
-        this.owner = owner
-        this.repo = repo
+    /**
+     * Tags
+     * @param {String} token
+     */
+    constructor(token) {
+        this.owner = github.context.repo.owner
+        this.repo = github.context.repo.repo
         this.octokit = github.getOctokit(token)
     }
 
@@ -31905,11 +31909,7 @@ const Tags = __nccwpck_require__(800)
         core.endGroup() // Config
 
         // Set Variables
-        const tags = new Tags(
-            config.token,
-            github.context.repo.owner,
-            github.context.repo.repo
-        )
+        const tags = new Tags(config.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 
