@@ -1,9 +1,12 @@
 const github = require('@actions/github')
 
 class Tags {
-    constructor(token, owner, repo) {
-        this.owner = owner
-        this.repo = repo
+    /**
+     * Tags
+     * @param {String} token
+     */
+    constructor(token) {
+        this.repo = github.context.repo
         this.octokit = github.getOctokit(token)
     }
 
@@ -11,8 +14,7 @@ class Tags {
         console.debug(`getRef: tags/${tag}`)
         try {
             return await this.octokit.rest.git.getRef({
-                owner: this.owner,
-                repo: this.repo,
+                ...this.repo,
                 ref: `tags/${tag}`,
             })
         } catch (e) {
@@ -26,8 +28,7 @@ class Tags {
     async createRef(tag, sha) {
         console.debug(`createRef: refs/tags/${tag}`, sha)
         return await this.octokit.rest.git.createRef({
-            owner: this.owner,
-            repo: this.repo,
+            ...this.repo,
             ref: `refs/tags/${tag}`,
             sha,
         })
@@ -36,8 +37,7 @@ class Tags {
     async updateRef(tag, sha, force = false) {
         console.debug(`updateRef: tags/${tag}`, sha, force)
         await this.octokit.rest.git.updateRef({
-            owner: this.owner,
-            repo: this.repo,
+            ...this.repo,
             ref: `tags/${tag}`,
             sha,
             force,

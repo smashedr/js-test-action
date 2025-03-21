@@ -15,22 +15,18 @@ const Tags = require('./tags')
         console.log(process.env)
         core.endGroup() // Debug process.env
 
-        // Get Config
+        // Config
         const config = getConfig()
-        core.startGroup('Get Config')
+        core.startGroup('Config')
         console.log(config)
         core.endGroup() // Config
 
-        // Set Variables
-        const tags = new Tags(
-            config.token,
-            github.context.repo.owner,
-            github.context.repo.repo
-        )
+        // Variables
+        const tags = new Tags(config.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 
-        // Action
+        // Processing
         core.startGroup(`Processing tag: "${config.tag}"`)
         let result
         const reference = await tags.getRef(config.tag)
@@ -77,34 +73,6 @@ const Tags = require('./tags')
     }
 })()
 
-/**
- * Add Summary
- * @param {Config} config
- * @param {String} result
- * @param {String} sha
- * @return {Promise<void>}
- */
-async function addSummary(config, result, sha) {
-    core.summary.addRaw('## JavaScript Test Action\n')
-    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${config.tag}`
-    core.summary.addRaw(
-        `${result}: [${config.tag}](${url}) :arrow_right: \`${sha}\`\n`
-    )
-
-    delete config.token
-    const yaml = Object.entries(config)
-        .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
-        .join('\n')
-    core.summary.addRaw('<details><summary>Config</summary>')
-    core.summary.addCodeBlock(yaml, 'yaml')
-    core.summary.addRaw('</details>\n')
-
-    const text = 'View Documentation, Report Issues or Request Features'
-    const link = 'https://github.com/smashedr/js-test-action'
-    core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`)
-    await core.summary.write()
-}
-
 // /**
 //  * Get Multiline Input or CSV
 //  * @param {String} name
@@ -128,6 +96,35 @@ async function addSummary(config, result, sha) {
 //     }
 //     return input
 // }
+
+/**
+ * Add Summary
+ * @param {Config} config
+ * @param {String} result
+ * @param {String} sha
+ * @return {Promise<void>}
+ */
+async function addSummary(config, result, sha) {
+    core.summary.addRaw('## JavaScript Test Action\n')
+
+    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${config.tag}`
+    core.summary.addRaw(
+        `${result}: [${config.tag}](${url}) :arrow_right: \`${sha}\`\n`
+    )
+
+    delete config.token
+    const yaml = Object.entries(config)
+        .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
+        .join('\n')
+    core.summary.addRaw('<details><summary>Config</summary>')
+    core.summary.addCodeBlock(yaml, 'yaml')
+    core.summary.addRaw('</details>\n')
+
+    const text = 'View Documentation, Report Issues or Request Features'
+    const link = 'https://github.com/smashedr/js-test-action'
+    core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`)
+    await core.summary.write()
+}
 
 /**
  * Get Config
