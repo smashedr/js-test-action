@@ -59,9 +59,9 @@ jobs:
       - name: "Debug"
         continue-on-error: true
         run: |
-          echo "::group::Event JSON"
-          cat "${GITHUB_EVENT_PATH}"
-          echo "::endgroup::"
+          #echo "::group::Event JSON"
+          #cat "${GITHUB_EVENT_PATH}"
+          #echo "::endgroup::"
 
           echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
 
