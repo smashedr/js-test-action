@@ -9,6 +9,7 @@
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx)](https://github.com/smashedr/js-test-action)
+[![GitHub repo size](https://img.shields.io/github/repo-size/smashedr/js-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/js-test-action)
 [![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/js-test-action)](https://github.com/smashedr/js-test-action/discussions)
 [![GitHub Forks](https://img.shields.io/github/forks/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/forks)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/stargazers)
