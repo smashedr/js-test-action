@@ -19,27 +19,35 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Get Commit Message"
+      #- name: "Get Commit Message"
+      #  id: commit
+      #  continue-on-error: true
+      #  env:
+      #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    REF: ${{ github.event.pull_request.head.sha }}
+      #  run: |
+      #    echo message=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
+      #      -H "Accept: application/vnd.github+json" \
+      #      -H "X-GitHub-Api-Version: 2022-11-28" \
+      #      --jq '.commit.message') >> "${GITHUB_OUTPUT}"
+
+      - name: "Get Commit Action"
+        if: ${{ github.event_name == 'pull_request' }}
         id: commit
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REF: ${{ github.event.pull_request.head.sha }}
-        run: |
-          echo message=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            --jq '.commit.message') >> "${GITHUB_OUTPUT}"
+        uses: cssnr/get-commit-action@master
+        with:
+          sha: ${{ github.event.pull_request.head.sha }}
+          selector: "commit.message"
 
       - name: "Debug"
         env:
-          COMMIT_MESSAGE: ${{ steps.commit.outputs.message }}
+          COMMIT_MESSAGE: ${{ steps.commit.outputs.result }}
         run: |
           echo "COMMIT_MESSAGE: ${COMMIT_MESSAGE}"
           echo "${COMMIT_MESSAGE}" | od -c
 
       - name: "ChatGPT CodeReview"
-        if: ${{ contains(steps.commit.outputs.message, '#gpt') }}
+        if: ${{ contains(steps.commit.outputs.result, '#gpt') }}
         run: echo yes
 
       #- name: "NPM Outdated Check"
