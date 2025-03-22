@@ -21,36 +21,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "Debug event.json"
-        continue-on-error: true
-        run: |
-          cat "${GITHUB_EVENT_PATH}"
-
       - name: "Get Commit Message"
         id: commit
         continue-on-error: true
         run: |
-          echo "message=$(git show -s --format=%s)" >> "${GITHUB_OUTPUT}"
+          echo "message=$(git show -s --format=%s ${{ github.event.pull_request.head.sha }})" >> "${GITHUB_OUTPUT}"
 
       - name: "Debug"
         continue-on-error: true
         run: |
-          echo "message: ${{ steps.commit.outputs.message }}"
           echo "sha: ${{ github.event.pull_request.head.sha }}"
-          echo "git show: $(git show -s --format=%B 98622ab468cec4f5d5b6d956647a433182ae2f3b)"
-          echo "git show: $(git show -s --format=%B ${{ github.event.pull_request.head.sha }})"
-
-      - name: "NOT GPT"
-        if: ${{ !contains(steps.commit.outputs.message, '#gpt') }}
-        continue-on-error: true
-        run: |
-          echo no
-
-      - name: "YES GPT"
-        if: ${{ contains(steps.commit.outputs.message, '#gpt') }}
-        continue-on-error: true
-        run: |
-          echo yes
+          echo "message: ${{ steps.commit.outputs.message }}"
+          echo "::group::Event JSON"
+          cat "${GITHUB_EVENT_PATH}"
+          echo "::endgroup::"
 
       - name: "NPM Outdated Check"
         continue-on-error: true
