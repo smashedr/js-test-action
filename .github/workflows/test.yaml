@@ -9,9 +9,9 @@ on:
     paths:
       - "dist/**"
       - "src/**"
-      - ".github/workflows/test.yaml"
       - "package*.json"
-      - "requirements.txt"
+      - "requirements*.txt"
+      - ".github/workflows/test.yaml"
       - "action.yml"
 
 concurrency:

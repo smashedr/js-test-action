@@ -20,4 +20,28 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "NPM Outdated Check"
+        continue-on-error: true
         uses: cssnr/npm-outdated-action@master
+
+      - name: "Spell Check Repo"
+        continue-on-error: true
+        uses: crate-ci/typos@v1.30.2
+        env:
+          CLICOLOR: 1
+
+      - name: "Spell Check Repo"
+        continue-on-error: true
+        uses: anc95/ChatGPT-CodeReview@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LANGUAGE: English
+          OPENAI_API_ENDPOINT: https://api.openai.com/v1
+          MODEL: gpt-4o-mini
+          PROMPT: "Please check the following code diff for errors and improvements."
+          top_p: 1
+          temperature: 1
+          max_tokens: 10000
+          MAX_PATCH_LENGTH: 10000
+          IGNORE_PATTERNS: "/node_modules/**/*,/dist/**/*,*.md"
+          INCLUDE_PATTERNS: "*.js,*.yaml,*.json"
