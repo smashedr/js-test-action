@@ -19,6 +19,11 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
+      - name: "Debug event.json"
+        continue-on-error: true
+        run: |
+          cat "${GITHUB_EVENT_PATH}"
+
       - name: "NPM Outdated Check"
         continue-on-error: true
         uses: cssnr/npm-outdated-action@master
