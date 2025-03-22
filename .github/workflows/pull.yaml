@@ -54,6 +54,7 @@ jobs:
           )
           echo "${message}"
           echo "${message}" | od -c
+
           echo "message=${message}" >> "${GITHUB_OUTPUT}"
 
       #- name: "Get Commit Message v2"
