@@ -28,8 +28,10 @@ jobs:
         uses: crate-ci/typos@v1.30.2
         env:
           CLICOLOR: 1
+        with:
+          files: README.md,CONTRIBUTING.md
 
-      - name: "Spell Check Repo"
+      - name: "ChatGPT CodeReview"
         continue-on-error: true
         uses: anc95/ChatGPT-CodeReview@main
         env:
