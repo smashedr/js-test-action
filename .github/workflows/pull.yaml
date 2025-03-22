@@ -27,38 +27,38 @@ jobs:
       #  run: |
       #    echo "message=$(git show -s --format=%s ${{ github.event.pull_request.head.sha }})" >> "${GITHUB_OUTPUT}"
 
-      #- name: "Get Commit Message v1"
+      - name: "Get Commit Message v1"
+        id: api
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REF: ${{ github.event.pull_request.head.sha }}
+        run: |
+          echo message=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            --jq '.commit.message') >> "${GITHUB_OUTPUT}"
+
+      #- name: "Get Commit Message v2"
       #  id: commit
       #  continue-on-error: true
       #  env:
       #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #    REF: ${{ github.event.pull_request.head.sha }}
       #  run: |
-      #    echo message=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
+      #    echo "url: /repos/${GITHUB_REPOSITORY}/commits/${REF}"
+      #    commit=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
       #      -H "Accept: application/vnd.github+json" \
       #      -H "X-GitHub-Api-Version: 2022-11-28" \
-      #      --jq '.commit.message') >> "${GITHUB_OUTPUT}"
-
-      - name: "Get Commit Message v2"
-        id: commit
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REF: ${{ github.event.pull_request.head.sha }}
-        run: |
-          echo "url: /repos/${GITHUB_REPOSITORY}/commits/${REF}"
-          commit=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${REF}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            --jq '.commit')
-          echo "commit: ${commit}"
-          echo "${commit}" | od -c
-          message=$(echo {commit} | jq -r '.message')
-          echo "message: ${message}"
-          echo "message=${message}" >> "${GITHUB_OUTPUT}"
-          echo "::group::Commit - ${REF}"
-          echo "{commit}"
-          echo "::endgroup::"
+      #      --jq '.commit')
+      #    echo "commit: ${commit}"
+      #    echo "${commit}" | od -c
+      #    message=$(echo {commit} | jq -r '.message')
+      #    echo "message: ${message}"
+      #    echo "message=${message}" >> "${GITHUB_OUTPUT}"
+      #    echo "::group::Commit - ${REF}"
+      #    echo "{commit}"
+      #    echo "::endgroup::"
 
       - name: "Debug"
         #continue-on-error: true
@@ -71,7 +71,7 @@ jobs:
 
           echo "head.sha: ${{ github.event.pull_request.head.sha }}"
           echo "GITHUB_SHA: ${GITHUB_SHA}"
-          echo "outputs.message: ${{ steps.commit.outputs.message }}"
+          echo "outputs.message: ${{ steps.api.outputs.message }}"
 
       - name: "ChatGPT CodeReview DEBUG"
         if: ${{ contains(steps.commit.outputs.message, '#gpt') }}
