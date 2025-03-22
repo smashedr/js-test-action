@@ -68,7 +68,6 @@ jobs:
           #echo "::endgroup::"
 
           echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
-
           echo "head.sha: ${{ github.event.pull_request.head.sha }}"
           echo "GITHUB_SHA: ${GITHUB_SHA}"
           echo "outputs.message: ${{ steps.api.outputs.message }}"
