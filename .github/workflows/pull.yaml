@@ -34,6 +34,9 @@ jobs:
         continue-on-error: true
         run: |
           echo "message: ${{ steps.commit.outputs.message }}"
+          echo "sha: ${{ github.event.pull_request.head.sha }}"
+          echo "git show: $(git show -s --format=%B 98622ab468cec4f5d5b6d956647a433182ae2f3b)"
+          echo "git show: $(git show -s --format=%B ${{ github.event.pull_request.head.sha }})"
 
       - name: "NOT GPT"
         if: ${{ !contains(steps.commit.outputs.message, '#gpt') }}
