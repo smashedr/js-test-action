@@ -47,8 +47,10 @@ jobs:
         continue-on-error: true
         run: |
           echo "sha: ${{ github.event.pull_request.head.sha }}"
+          echo "GITHUB_SHA: ${GITHUB_SHA}"
           echo "message: ${{ steps.commit.outputs.message }}"
-          echo "message: ${{ steps.api.outputs.message }}"
+          echo "api.message: ${{ steps.api.outputs.message }}"
+          echo "url: /repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}"
           echo "::group::Event JSON"
           cat "${GITHUB_EVENT_PATH}"
           echo "::endgroup::"
