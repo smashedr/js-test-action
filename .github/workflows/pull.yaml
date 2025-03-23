@@ -50,8 +50,8 @@ jobs:
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
           MODEL: gpt-4o-mini
           PROMPT: |
-            Please check the following code diff for errors and improvements.
-            Focus on quality over quantity.
+            Check the following code diff for errors and improvements.
+            Please focus on simple quality responses.
           top_p: 1
           temperature: 1
           max_tokens: 10000
