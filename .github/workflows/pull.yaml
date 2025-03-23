@@ -57,8 +57,8 @@ jobs:
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
           MODEL: gpt-4o-mini
           PROMPT: >-
-            Check the following code diff for errors and/or improvements. Please 
-            focus on simple, quality responses. Only provide suggestions for things 
+            Check the following code diff for errors and/or improvements. Please
+            focus on simple, quality responses. Only provide suggestions for things
             that are fully understood and do not make recommendations based on assumptions!
           top_p: 1
           temperature: 1
