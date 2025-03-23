@@ -40,7 +40,7 @@ jobs:
         uses: cssnr/npm-outdated-action@master
 
       - name: "ChatGPT CodeReview"
-        if: ${{ contains(steps.commit.outputs.message, '#gpt') }}
+        if: ${{ contains(steps.commit.outputs.result, '#gpt') }}
         continue-on-error: true
         uses: anc95/ChatGPT-CodeReview@main
         env:
