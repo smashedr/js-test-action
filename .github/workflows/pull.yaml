@@ -34,9 +34,9 @@ jobs:
           echo "COMMIT_MESSAGE: ${COMMIT_MESSAGE}"
           echo "${COMMIT_MESSAGE}" | od -c
 
-      - name: "NPM Outdated Check"
-        continue-on-error: true
-        uses: cssnr/npm-outdated-action@master
+      #- name: "NPM Outdated Check"
+      #  continue-on-error: true
+      #  uses: cssnr/npm-outdated-action@master
 
       - name: "ChatGPT CodeReview"
         if: ${{ contains(steps.commit.outputs.result, '#gpt') }}
