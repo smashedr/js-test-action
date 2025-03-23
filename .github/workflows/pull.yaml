@@ -43,6 +43,7 @@ jobs:
         env:
           COMMIT_MESSAGE: ${{ steps.commit.outputs.result }}
         run: |
+          echo "sha: ${{ github.event.pull_request.head.sha }}"
           echo "COMMIT_MESSAGE: ${COMMIT_MESSAGE}"
           echo "${COMMIT_MESSAGE}" | od -c
 
