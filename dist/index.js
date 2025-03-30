@@ -29929,10 +29929,15 @@ class Tags {
         this.octokit = github.getOctokit(token)
     }
 
+    /**
+     * Get Ref
+     * @param {String} tag
+     * @return {Promise<Object|null>}
+     */
     async getRef(tag) {
         console.debug(`getRef: tags/${tag}`)
         try {
-            return await this.octokit.rest.git.getRef({
+            return this.octokit.rest.git.getRef({
                 ...this.repo,
                 ref: `tags/${tag}`,
             })
@@ -29944,18 +29949,31 @@ class Tags {
         }
     }
 
+    /**
+     * Create Ref
+     * @param {String} tag
+     * @param {String} sha
+     * @return {Promise<Object>}
+     */
     async createRef(tag, sha) {
         console.debug(`createRef: refs/tags/${tag}`, sha)
-        return await this.octokit.rest.git.createRef({
+        return this.octokit.rest.git.createRef({
             ...this.repo,
             ref: `refs/tags/${tag}`,
             sha,
         })
     }
 
+    /**
+     * Update Ref
+     * @param {String} tag
+     * @param {String} sha
+     * @param {Boolean} [force]
+     * @return {Promise<Object>}
+     */
     async updateRef(tag, sha, force = false) {
         console.debug(`updateRef: tags/${tag}`, sha, force)
-        await this.octokit.rest.git.updateRef({
+        return this.octokit.rest.git.updateRef({
             ...this.repo,
             ref: `tags/${tag}`,
             sha,
