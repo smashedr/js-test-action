@@ -1,7 +1,7 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases/latest)
-[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/js-test-action/dist%2Findex.js?label=dist%20size)](https://github.com/smashedr/js-test-action/blob/master/src/index.js)
+[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/js-test-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/js-test-action/blob/master/src)
 [![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
 [![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=cachet&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
 [![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=cachet&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
