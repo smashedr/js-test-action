@@ -33,13 +33,13 @@ const Api = require('./api.js')
         console.log('reference:', reference)
         if (reference) {
             core.info(`current sha: ${reference.object.sha}`)
-            if (sha !== reference.object.sha) {
+            if (sha === reference.object.sha) {
+                core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`)
+                result = 'Not Changed'
+            } else {
                 core.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`)
                 await api.updateRef(inputs.tag, sha, true)
                 result = 'Updated'
-            } else {
-                core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`)
-                result = 'Not Changed'
             }
         } else {
             core.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`)

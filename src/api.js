@@ -14,7 +14,7 @@ class Api {
     /**
      * Get Ref
      * @param {String} tag
-     * @return {{Promise<InstanceType<typeof github.GitHub>|Undefined>}
+     * @return {Promise<InstanceType<typeof github.GitHub>|Undefined>}
      */
     async getRef(tag) {
         console.debug(`getRef: tags/${tag}`)
