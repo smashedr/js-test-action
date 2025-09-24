@@ -1,8 +1,9 @@
 const github = require('@actions/github')
 
-class Tags {
+class Api {
     /**
-     * Tags
+     * GitHub Octokit Api
+     * https://octokit.github.io/rest.js/
      * @param {String} token
      */
     constructor(token) {
@@ -13,18 +14,19 @@ class Tags {
     /**
      * Get Ref
      * @param {String} tag
-     * @return {Promise<Object|null>}
+     * @return {{Promise<InstanceType<typeof github.GitHub>|Undefined>}
      */
     async getRef(tag) {
         console.debug(`getRef: tags/${tag}`)
         try {
-            return this.octokit.rest.git.getRef({
+            const result = await this.octokit.rest.git.getRef({
                 ...this.repo,
                 ref: `tags/${tag}`,
             })
+            return result.data
         } catch (e) {
             if (e.status === 404) {
-                return null
+                return
             }
             throw new Error(e)
         }
@@ -63,4 +65,4 @@ class Tags {
     }
 }
 
-module.exports = Tags
+module.exports = Api

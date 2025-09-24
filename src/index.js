@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
 
-const Tags = require('./tags')
+const Api = require('./api.js')
 
 ;(async () => {
     try {
@@ -15,37 +15,35 @@ const Tags = require('./tags')
         console.log(process.env)
         core.endGroup() // Debug process.env
 
-        // Config
-        const config = getConfig()
-        core.startGroup('Config')
-        console.log(config)
-        core.endGroup() // Config
+        // Inputs
+        const inputs = getInputs()
+        core.startGroup('Inputs')
+        console.log(inputs)
+        core.endGroup() // Inputs
 
         // Variables
-        const tags = new Tags(config.token)
+        const api = new Api(inputs.token)
         const sha = github.context.sha
         core.info(`Target sha: \u001b[33;1m${sha}`)
 
         // Processing
-        core.startGroup(`Processing tag: "${config.tag}"`)
+        core.startGroup(`Processing tag: "${inputs.tag}"`)
         let result
-        const reference = await tags.getRef(config.tag)
-        // console.log('reference.data:', reference?.data)
+        const reference = await api.getRef(inputs.tag)
+        console.log('reference:', reference)
         if (reference) {
-            core.info(`current sha: ${reference.data.object.sha}`)
-            if (sha !== reference.data.object.sha) {
-                core.info(`\u001b[35mUpdating tag "${config.tag}" to: ${sha}`)
-                await tags.updateRef(config.tag, sha, true)
+            core.info(`current sha: ${reference.object.sha}`)
+            if (sha !== reference.object.sha) {
+                core.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`)
+                await api.updateRef(inputs.tag, sha, true)
                 result = 'Updated'
             } else {
-                core.info(
-                    `\u001b[36mTag "${config.tag}" already points to: ${sha}`
-                )
+                core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`)
                 result = 'Not Changed'
             }
         } else {
-            core.info(`\u001b[33mCreating new tag "${config.tag}" to: ${sha}`)
-            await tags.createRef(config.tag, sha)
+            core.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`)
+            await api.createRef(inputs.tag, sha)
             result = 'Created'
         }
         core.endGroup() // Processing
@@ -55,10 +53,10 @@ const Tags = require('./tags')
         core.setOutput('sha', sha)
 
         // Summary
-        if (config.summary) {
+        if (inputs.summary) {
             core.info('📝 Writing Job Summary')
             try {
-                await addSummary(config, result, sha)
+                await addSummary(inputs, result, sha)
             } catch (e) {
                 console.log(e)
                 core.error(`Error writing Job Summary ${e.message}`)
@@ -73,50 +71,24 @@ const Tags = require('./tags')
     }
 })()
 
-// /**
-//  * Get Multiline Input or CSV
-//  * @param {String} name
-//  * @param {Boolean} required
-//  * @param {Boolean} trimWhitespace
-//  * @return {String[]}
-//  */
-// function getMultiCsv(name, required = false, trimWhitespace = true) {
-//     let input = core.getMultilineInput(name, { required, trimWhitespace })
-//     if (input.length === 1 && input[0].includes(',')) {
-//         input = input[0].split(',')
-//     }
-//     if (trimWhitespace) {
-//         input = input.map((item) => item.trim())
-//     }
-//     input = input.filter((i) => {
-//         return i
-//     })
-//     if (!input.length && required) {
-//         throw new Error(`Missing Required Input: ${name}`)
-//     }
-//     return input
-// }
-
 /**
  * Add Summary
- * @param {Config} config
+ * @param {Inputs} inputs
  * @param {String} result
  * @param {String} sha
  * @return {Promise<void>}
  */
-async function addSummary(config, result, sha) {
+async function addSummary(inputs, result, sha) {
     core.summary.addRaw('## JavaScript Test Action\n')
 
-    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${config.tag}`
-    core.summary.addRaw(
-        `${result}: [${config.tag}](${url}) :arrow_right: \`${sha}\`\n`
-    )
+    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${inputs.tag}`
+    core.summary.addRaw(`${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`)
 
-    delete config.token
-    const yaml = Object.entries(config)
+    delete inputs.token
+    const yaml = Object.entries(inputs)
         .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
         .join('\n')
-    core.summary.addRaw('<details><summary>Config</summary>')
+    core.summary.addRaw('<details><summary>Inputs</summary>')
     core.summary.addCodeBlock(yaml, 'yaml')
     core.summary.addRaw('</details>\n')
 
@@ -127,14 +99,14 @@ async function addSummary(config, result, sha) {
 }
 
 /**
- * Get Config
- * @typedef {Object} Config
+ * Get Inputs
+ * @typedef {Object} Inputs
  * @property {String} tag
  * @property {Boolean} summary
  * @property {String} token
- * @return {Config}
+ * @return {Inputs}
  */
-function getConfig() {
+function getInputs() {
     return {
         tag: core.getInput('tag', { required: true }),
         summary: core.getBooleanInput('summary'),
