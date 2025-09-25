@@ -7,6 +7,8 @@
   - [Testing](#Testing)
 - [Actions Development](#Actions-Development)
 
+This is a basic contributing guide and is a work in progress.
+
 ## Workflow
 
 1. Fork the repository.
@@ -48,10 +50,12 @@ To see all available jobs run: `act -l`
 
 A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
 
-This is a JavaScript Action. For other types see:
+For other Action types, see:
 
+- JavaScript: https://github.com/smashedr/js-test-action
 - TypeScript: https://github.com/smashedr/ts-test-action
-- Docker/Python: https://github.com/smashedr/py-test-action
+- Docker: https://github.com/smashedr/docker-test-action
+- Python: https://github.com/smashedr/py-test-action (DEPRECATED)
 
 The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
 

@@ -1,5 +1,5 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
-[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
+[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases/latest)
 [![GitHub Dist Size](https://img.shields.io/github/size/smashedr/js-test-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/js-test-action/blob/master/src)
 [![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
@@ -9,9 +9,10 @@
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/pulse)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
 [![GitHub Contributors](https://img.shields.io/github/contributors/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/graphs/contributors)
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/js-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/js-test-action)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/js-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx)](https://github.com/smashedr/js-test-action)
 [![GitHub Forks](https://img.shields.io/github/forks/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/forks)
+[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/discussions)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
@@ -28,11 +29,16 @@
 - [Contributing](#Contributing)
 - [Development](#Development)
 
-JavaScript Test Action Template
+JavaScript Test Action Template.
 
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
 
 This includes inputs, outputs, job summary, and automatic token authentication.
+
+- JavaScript: https://github.com/smashedr/js-test-action
+- TypeScript: https://github.com/smashedr/ts-test-action
+- Docker: https://github.com/smashedr/docker-test-action
+- Python: https://github.com/smashedr/py-test-action
 
 ## Inputs
 
@@ -184,6 +190,9 @@ Additionally, you can support other GitHub Actions I have published:
 - [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
 - [Package Changelog Action](https://github.com/cssnr/package-changelog-action?tab=readme-ov-file#readme)
 - [NPM Outdated Check Action](https://github.com/cssnr/npm-outdated-action?tab=readme-ov-file#readme)
+- [Label Creator Action](https://github.com/cssnr/label-creator-action?tab=readme-ov-file#readme)
+- [Algolia Crawler Action](https://github.com/cssnr/algolia-crawler-action?tab=readme-ov-file#readme)
+- [Upload Release Action](https://github.com/cssnr/upload-release-action?tab=readme-ov-file#readme)
 
 For a full list of current projects to support visit: [https://cssnr.github.io/](https://cssnr.github.io/)
 
