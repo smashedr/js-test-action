@@ -13,8 +13,9 @@ class Api {
 
     /**
      * Get Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#get-a-reference
      * @param {String} tag
-     * @return {Promise<InstanceType<typeof github.GitHub>|Undefined>}
+     * @return {Promise<Object|undefined>}
      */
     async getRef(tag) {
         console.debug(`getRef: tags/${tag}`)
@@ -34,6 +35,7 @@ class Api {
 
     /**
      * Create Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#create-a-reference
      * @param {String} tag
      * @param {String} sha
      * @return {Promise<Object>}
@@ -49,6 +51,7 @@ class Api {
 
     /**
      * Update Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#update-a-reference
      * @param {String} tag
      * @param {String} sha
      * @param {Boolean} [force]
