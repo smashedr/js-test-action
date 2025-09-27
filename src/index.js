@@ -48,7 +48,8 @@ const Api = require('./api.js')
         }
         core.endGroup() // Processing
 
-        // Outputs
+        // Outputs - JSON.stringify is applied to the output values
+        // https://github.com/actions/toolkit/blob/ddc5fa4ae84a892bfa8431c353db3cf628f1235d/packages/core/src/utils.ts#L11
         core.info('📩 Setting Outputs')
         core.setOutput('sha', sha)
 
