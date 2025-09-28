@@ -8,7 +8,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/pulse)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
-[![GitHub Contributors](https://img.shields.io/github/contributors/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/graphs/contributors)
+[![GitHub Contributors](https://img.shields.io/github/contributors-anon/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/graphs/contributors)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/js-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx)](https://github.com/smashedr/js-test-action)
 [![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/discussions)
@@ -179,7 +179,8 @@ For more information, see the CSSNR [CONTRIBUTING.md](https://github.com/cssnr/.
 Additionally, you can support other GitHub Actions I have published:
 
 - [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
-- [Portainer Stack Deploy](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
+- [Portainer Stack Deploy Action](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
+- [Docker Context Action](https://github.com/cssnr/docker-context-action?tab=readme-ov-file#readme)
 - [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
 - [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
 - [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)
