@@ -31262,8 +31262,9 @@ function requireApi () {
 
 	    /**
 	     * Get Ref
+	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#get-a-reference
 	     * @param {String} tag
-	     * @return {Promise<InstanceType<typeof github.GitHub>|Undefined>}
+	     * @return {Promise<Object|undefined>}
 	     */
 	    async getRef(tag) {
 	        console.debug(`getRef: tags/${tag}`);
@@ -31283,6 +31284,7 @@ function requireApi () {
 
 	    /**
 	     * Create Ref
+	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#create-a-reference
 	     * @param {String} tag
 	     * @param {String} sha
 	     * @return {Promise<Object>}
@@ -31298,6 +31300,7 @@ function requireApi () {
 
 	    /**
 	     * Update Ref
+	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#update-a-reference
 	     * @param {String} tag
 	     * @param {String} sha
 	     * @param {Boolean} [force]
@@ -31373,7 +31376,8 @@ function requireSrc () {
 	        }
 	        core.endGroup(); // Processing
 
-	        // Outputs
+	        // Outputs - JSON.stringify is applied to the output values
+	        // https://github.com/actions/toolkit/blob/ddc5fa4ae84a892bfa8431c353db3cf628f1235d/packages/core/src/utils.ts#L11
 	        core.info('📩 Setting Outputs');
 	        core.setOutput('sha', sha);
 
