@@ -70,6 +70,11 @@ jobs:
       #    echo "::endgroup::"
       #    "${RUNNER_TEMP}/actionlint" -color -verbose -shellcheck= -pyflakes=
 
+      - name: "Verify action.yml"
+        if: ${{ !cancelled() }}
+        run: |
+          yq -e '.runs.main | test("^dist/")' action.yml
+
       - name: "Check Build Action"
         if: ${{ !cancelled() }}
         uses: cssnr/check-build-action@v1
