@@ -31333,7 +31333,7 @@ function requireSrc () {
 
 	;(async () => {
 	    try {
-	        core.info(`🏳️ Starting JavaScript Test Action Fail 2`);
+	        core.info(`🏳️ Starting JavaScript Test Action`);
 
 	        // Debug
 	        core.startGroup('Debug: github.context');
