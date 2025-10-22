@@ -23,7 +23,8 @@ jobs:
       - name: "Checkout Pull"
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          #ref: ${{ github.event.pull_request.merge_commit_sha }}
 
       - name: "Debug"
         continue-on-error: true
