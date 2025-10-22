@@ -1,8 +1,9 @@
-const core = require('@actions/core')
-const github = require('@actions/github')
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 
-const Api = require('./api.js')
+import { Api } from './api.js'
 
+// Main
 ;(async () => {
     try {
         core.info(`🏳️ Starting JavaScript Test Action`)

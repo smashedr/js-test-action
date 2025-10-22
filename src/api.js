@@ -1,6 +1,6 @@
-const github = require('@actions/github')
+import * as github from '@actions/github'
 
-class Api {
+export class Api {
     /**
      * GitHub Octokit Api
      * https://octokit.github.io/rest.js/
@@ -67,5 +67,3 @@ class Api {
         })
     }
 }
-
-module.exports = Api
