@@ -8,15 +8,12 @@ branding:
 inputs:
   tag:
     description: "Tag to Create or Update"
-    required: false
     default: "test"
   summary:
     description: "Add Summary to Job"
-    required: false
     default: "true"
   token:
     description: "GitHub Token"
-    required: false
     default: ${{ github.token }}
 
 outputs:
