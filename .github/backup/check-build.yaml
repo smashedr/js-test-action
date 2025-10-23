@@ -3,10 +3,6 @@ name: "Check Build"
 on:
   pull_request_target:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   check-build:
     name: "Check Build"
@@ -28,6 +24,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          #ref: ${{ github.event.pull_request.merge_commit_sha }}
 
       - name: "Debug"
         continue-on-error: true
@@ -35,20 +32,21 @@ jobs:
           echo "::group::ls"
           ls -lAh
           echo "::endgroup::"
+
           echo "::group::tree"
           tree .
           echo "::endgroup::"
 
-      #- name: "Setup Node 24"
-      #  uses: actions/setup-node@v6
-      #  with:
-      #    node-version: 24
-      #
-      #- name: "Install"
-      #  id: install
-      #  run: |
-      #    npm ci
+      - name: "Setup Node 24"
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: "Install"
+        id: install
+        run: |
+          npm ci
 
       - name: "Check Build Action"
         if: ${{ !cancelled() }}
-        uses: cssnr/check-build-action@master
+        uses: cssnr/check-build-action@target
