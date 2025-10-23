@@ -37,6 +37,13 @@ jobs:
         run: |
           cat "${GITHUB_EVENT_PATH}"
 
+      - name: "Debug CTX github"
+        if: ${{ !github.event.act }}
+        continue-on-error: true
+        env:
+          GITHUB_CTX: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CTX"
+
       - name: "Test Local Action"
         id: test
         uses: ./
