@@ -75,8 +75,8 @@ const Api = require('./api.js')
 /**
  * Add Summary
  * @param {Inputs} inputs
- * @param {String} result
- * @param {String} sha
+ * @param {string} result
+ * @param {string} sha
  * @return {Promise<void>}
  */
 async function addSummary(inputs, result, sha) {
@@ -101,10 +101,10 @@ async function addSummary(inputs, result, sha) {
 
 /**
  * Get Inputs
- * @typedef {Object} Inputs
- * @property {String} tag
- * @property {Boolean} summary
- * @property {String} token
+ * @typedef {object} Inputs
+ * @property {string} tag
+ * @property {boolean} summary
+ * @property {string} token
  * @return {Inputs}
  */
 function getInputs() {

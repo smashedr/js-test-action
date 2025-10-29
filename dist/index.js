@@ -31253,7 +31253,7 @@ function requireApi () {
 	    /**
 	     * GitHub Octokit Api
 	     * https://octokit.github.io/rest.js/
-	     * @param {String} token
+	     * @param {string} token
 	     */
 	    constructor(token) {
 	        this.repo = github.context.repo;
@@ -31263,8 +31263,8 @@ function requireApi () {
 	    /**
 	     * Get Ref
 	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#get-a-reference
-	     * @param {String} tag
-	     * @return {Promise<Object|undefined>}
+	     * @param {string} tag
+	     * @return {Promise<object|undefined>}
 	     */
 	    async getRef(tag) {
 	        console.debug(`getRef: tags/${tag}`);
@@ -31285,9 +31285,9 @@ function requireApi () {
 	    /**
 	     * Create Ref
 	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#create-a-reference
-	     * @param {String} tag
-	     * @param {String} sha
-	     * @return {Promise<Object>}
+	     * @param {string} tag
+	     * @param {string} sha
+	     * @return {Promise<object>}
 	     */
 	    async createRef(tag, sha) {
 	        console.debug(`createRef: refs/tags/${tag}`, sha);
@@ -31301,10 +31301,10 @@ function requireApi () {
 	    /**
 	     * Update Ref
 	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#update-a-reference
-	     * @param {String} tag
-	     * @param {String} sha
-	     * @param {Boolean} [force]
-	     * @return {Promise<Object>}
+	     * @param {string} tag
+	     * @param {string} sha
+	     * @param {boolean} [force]
+	     * @return {Promise<object>}
 	     */
 	    async updateRef(tag, sha, force = false) {
 	        console.debug(`updateRef: tags/${tag}`, sha, force);
@@ -31403,8 +31403,8 @@ function requireSrc () {
 	/**
 	 * Add Summary
 	 * @param {Inputs} inputs
-	 * @param {String} result
-	 * @param {String} sha
+	 * @param {string} result
+	 * @param {string} sha
 	 * @return {Promise<void>}
 	 */
 	async function addSummary(inputs, result, sha) {
@@ -31429,10 +31429,10 @@ function requireSrc () {
 
 	/**
 	 * Get Inputs
-	 * @typedef {Object} Inputs
-	 * @property {String} tag
-	 * @property {Boolean} summary
-	 * @property {String} token
+	 * @typedef {object} Inputs
+	 * @property {string} tag
+	 * @property {boolean} summary
+	 * @property {string} token
 	 * @return {Inputs}
 	 */
 	function getInputs() {
