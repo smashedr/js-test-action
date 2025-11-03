@@ -1,4 +1,5 @@
 name: "JavaScript Test Action"
+# Description must be less than 125 characters.
 description: "JavaScript Test Action"
 author: "Shane"
 branding:
