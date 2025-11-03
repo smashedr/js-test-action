@@ -5,7 +5,7 @@ const Api = require('./api.js')
 
 ;(async () => {
     try {
-        core.info(`🏳️ Starting JavaScript Test Action`)
+        core.info(`🏳️ Starting Modified JavaScript Test Action`)
 
         // Debug
         core.startGroup('Debug: github.context')
