@@ -1,4 +1,4 @@
-name: "Test"
+name: "Master"
 
 on:
   workflow_dispatch:
@@ -17,8 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: "Test"
+  master:
+    name: "Master"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
