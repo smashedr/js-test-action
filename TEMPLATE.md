@@ -1,3 +1,18 @@
+## Colors
+
+```js
+console.log('\u001b[37;1m White')
+console.log('\u001b[36;1m Cyan')
+console.log('\u001b[35;1m Magenta')
+console.log('\u001b[34;1m Blue')
+console.log('\u001b[33;1m Yellow')
+console.log('\u001b[32;1m Green')
+console.log('\u001b[31;1m Red')
+console.log('\u001b[30;1m Grey')
+
+console.log('\u001b[0m Reset')
+```
+
 ## Action Path
 
 CJS
