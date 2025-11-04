@@ -1,5 +1,6 @@
 'use strict';
 
+var require$$0$a = require('node:path');
 var require$$0 = require('os');
 var require$$0$1 = require('crypto');
 var require$$1 = require('fs');
@@ -31326,6 +31327,8 @@ var hasRequiredSrc;
 function requireSrc () {
 	if (hasRequiredSrc) return src;
 	hasRequiredSrc = 1;
+	const path = require$$0$a;
+
 	const core = requireCore();
 	const github = requireGithub();
 
@@ -31342,6 +31345,10 @@ function requireSrc () {
 	        core.startGroup('Debug: process.env');
 	        console.log(process.env);
 	        core.endGroup(); // Debug process.env
+
+	        console.log(`__dirname: ${__dirname}`);
+	        const src = path.resolve(__dirname, '../src');
+	        console.log(`src: ${src}`);
 
 	        // Inputs
 	        const inputs = getInputs();
@@ -31377,7 +31384,7 @@ function requireSrc () {
 	        core.endGroup(); // Processing
 
 	        // Outputs - JSON.stringify is applied to the output values
-	        // https://github.com/actions/toolkit/blob/ddc5fa4ae84a892bfa8431c353db3cf628f1235d/packages/core/src/utils.ts#L11
+	        // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
 	        core.info('📩 Setting Outputs');
 	        core.setOutput('sha', sha);
 
