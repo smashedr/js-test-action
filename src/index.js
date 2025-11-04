@@ -17,7 +17,7 @@ const Api = require('./api.js')
         console.log(process.env)
         core.endGroup() // Debug process.env
 
-        core.debug(`__dirname: ${__dirname}`)
+        console.log(`__dirname: ${__dirname}`)
         const src = path.resolve(__dirname, '../src')
         console.log(`src: ${src}`)
 
