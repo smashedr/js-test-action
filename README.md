@@ -172,9 +172,12 @@ For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.githu
 
 # Contributing
 
-Currently, the best way to contribute to this project is to star this project on GitHub.
+Please consider making a donation to support the development of this project
+and [additional](https://cssnr.com/) open source projects.
 
-For more information, see the CSSNR [CONTRIBUTING.md](https://github.com/cssnr/.github/blob/master/.github/CONTRIBUTING.md#contributing).
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
+
+If you would like to submit a PR, please review the [CONTRIBUTING.md](#contributing-ov-file).
 
 Additionally, you can support other GitHub Actions I have published:
 
@@ -234,7 +237,8 @@ For a full list of current projects to support visit: [https://cssnr.github.io/]
 
 # Development
 
-Development instructions have been moved to the local [CONTRIBUTING.md](CONTRIBUTING.md).
+Development instructions have been moved to the local [CONTRIBUTING.md](#contributing-ov-file).
+Additional notes are being added to [TEMPLATE.md](TEMPLATE.md).
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
