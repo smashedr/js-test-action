@@ -172,12 +172,12 @@ For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.githu
 
 # Contributing
 
+If you would like to submit a PR, please review the [CONTRIBUTING.md](#contributing-ov-file).
+
 Please consider making a donation to support the development of this project
 and [additional](https://cssnr.com/) open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
-
-If you would like to submit a PR, please review the [CONTRIBUTING.md](#contributing-ov-file).
 
 Additionally, you can support other GitHub Actions I have published:
 
