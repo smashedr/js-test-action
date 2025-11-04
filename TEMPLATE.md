@@ -1,4 +1,29 @@
-Action Path in ESM
+## Action Path
+
+CJS
+
+```js
+const path = require('node:path')
+
+core.debug(`__dirname: ${__dirname}`)
+const bin = path.resolve(__dirname, '../src')
+console.log(`bin: ${bin}`)
+```
+
+ESM
+
+```js
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+core.debug(`__dirname: ${__dirname}`)
+const bin = path.resolve(__dirname, '../src')
+console.log(`bin: ${bin}`)
+```
+
+GitHub Variables
 
 ```js
 core.debug(`GITHUB_ACTION_REPOSITORY: ${process.env.GITHUB_ACTION_REPOSITORY}`)
@@ -10,13 +35,5 @@ if (process.env.GITHUB_ACTION_REPOSITORY && process.env.GITHUB_ACTION_REF) {
   console.log(`actionPath: ${actionPath}`)
   bin = `${actionPath}/src`
 }
-console.log(`bin: ${bin}`)
-```
-
-Action Path in CJS
-
-```js
-core.debug(`__dirname: ${__dirname}`)
-const bin = path.resolve(__dirname, '../src')
 console.log(`bin: ${bin}`)
 ```
