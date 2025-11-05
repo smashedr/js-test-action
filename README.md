@@ -233,7 +233,7 @@ Note: The `docker-test-action` builds, runs and pushes images to [GitHub Contain
 
 </details>
 
-For a full list of current projects to support visit: [https://cssnr.github.io/](https://cssnr.github.io/)
+For a full list of current projects visit: [https://cssnr.github.io/](https://cssnr.github.io/)
 
 # Development
 
