@@ -1,82 +1,81 @@
-const path = require('node:path')
+import path from 'node:path'
 
-const core = require('@actions/core')
-const github = require('@actions/github')
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 
-const Api = require('./api.js')
+import { Api } from './api.js'
+import { fileURLToPath } from 'node:url'
 
-;(async () => {
-    try {
-        core.info(`🏳️ Starting JavaScript Test Action`)
+async function main() {
+    core.info(`🏳️ Starting JavaScript Test Action`)
 
-        // Debug
-        core.startGroup('Debug: github.context')
-        console.log(github.context)
-        core.endGroup() // Debug github.context
-        core.startGroup('Debug: process.env')
-        console.log(process.env)
-        core.endGroup() // Debug process.env
+    // Debug
+    core.startGroup('Debug: github.context')
+    console.log(github.context)
+    core.endGroup() // Debug github.context
+    core.startGroup('Debug: process.env')
+    console.log(process.env)
+    core.endGroup() // Debug process.env
 
-        console.log(`__dirname: ${__dirname}`)
-        const src = path.resolve(__dirname, '../src')
-        console.log(`src: ${src}`)
+    // Path
+    const __filename = fileURLToPath(import.meta.url)
+    console.log(`__filename: ${__filename}`)
+    const __dirname = path.dirname(__filename)
+    console.log(`__dirname: ${__dirname}`)
+    const src = path.resolve(__dirname, '../src')
+    console.log(`src: ${src}`)
 
-        // Inputs
-        const inputs = getInputs()
-        core.startGroup('Inputs')
-        console.log(inputs)
-        core.endGroup() // Inputs
+    // Inputs
+    const inputs = getInputs()
+    core.startGroup('Inputs')
+    console.log(inputs)
+    core.endGroup() // Inputs
 
-        // Variables
-        const api = new Api(inputs.token)
-        const sha = github.context.sha
-        core.info(`Target sha: \u001b[33;1m${sha}`)
+    // Variables
+    const api = new Api(inputs.token)
+    const sha = github.context.sha
+    core.info(`Target sha: \u001b[33;1m${sha}`)
 
-        // Processing
-        core.startGroup(`Processing tag: "${inputs.tag}"`)
-        let result
-        const reference = await api.getRef(inputs.tag)
-        console.log('reference:', reference)
-        if (reference) {
-            core.info(`current sha: ${reference.object.sha}`)
-            if (sha === reference.object.sha) {
-                core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`)
-                result = 'Not Changed'
-            } else {
-                core.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`)
-                await api.updateRef(inputs.tag, sha, true)
-                result = 'Updated'
-            }
+    // Processing
+    core.startGroup(`Processing tag: "${inputs.tag}"`)
+    let result
+    const reference = await api.getRef(inputs.tag)
+    console.log('reference:', reference)
+    if (reference) {
+        core.info(`current sha: ${reference.object.sha}`)
+        if (sha === reference.object.sha) {
+            core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`)
+            result = 'Not Changed'
         } else {
-            core.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`)
-            await api.createRef(inputs.tag, sha)
-            result = 'Created'
+            core.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`)
+            await api.updateRef(inputs.tag, sha, true)
+            result = 'Updated'
         }
-        core.endGroup() // Processing
-
-        // Outputs - JSON.stringify is applied to the output values
-        // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
-        core.info('📩 Setting Outputs')
-        core.setOutput('sha', sha)
-
-        // Summary
-        if (inputs.summary) {
-            core.info('📝 Writing Job Summary')
-            try {
-                await addSummary(inputs, result, sha)
-            } catch (e) {
-                console.log(e)
-                core.error(`Error writing Job Summary ${e.message}`)
-            }
-        }
-
-        core.info(`✅ \u001b[32;1mFinished Success`)
-    } catch (e) {
-        core.debug(e)
-        core.info(e.message)
-        core.setFailed(e.message)
+    } else {
+        core.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`)
+        await api.createRef(inputs.tag, sha)
+        result = 'Created'
     }
-})()
+    core.endGroup() // Processing
+
+    // Outputs - JSON.stringify is applied to the output values
+    // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
+    core.info('📩 Setting Outputs')
+    core.setOutput('sha', sha)
+
+    // Summary
+    if (inputs.summary) {
+        core.info('📝 Writing Job Summary')
+        try {
+            await addSummary(inputs, result, sha)
+        } catch (e) {
+            console.log(e)
+            core.error(`Error writing Job Summary ${e.message}`)
+        }
+    }
+
+    core.info(`✅ \u001b[32;1mFinished Success`)
+}
 
 /**
  * Add Summary
@@ -119,4 +118,20 @@ function getInputs() {
         summary: core.getBooleanInput('summary'),
         token: core.getInput('token', { required: true }),
     }
+}
+
+// main()
+// await main()
+// main().catch((e) => {
+//     core.debug(e)
+//     core.info(e.message)
+//     core.setFailed(e.message)
+// })
+
+try {
+    await main()
+} catch (e) {
+    core.debug(e)
+    core.info(e.message)
+    core.setFailed(e.message)
 }
