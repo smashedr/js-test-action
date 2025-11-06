@@ -16,6 +16,10 @@ import { Api } from './api.js'
         console.log(process.env)
         core.endGroup() // Debug process.env
 
+        console.log(`__dirname: ${__dirname}`)
+        const src = path.resolve(__dirname, '../src')
+        console.log(`src: ${src}`)
+
         // Inputs
         const inputs = getInputs()
         core.startGroup('Inputs')
@@ -50,7 +54,7 @@ import { Api } from './api.js'
         core.endGroup() // Processing
 
         // Outputs - JSON.stringify is applied to the output values
-        // https://github.com/actions/toolkit/blob/ddc5fa4ae84a892bfa8431c353db3cf628f1235d/packages/core/src/utils.ts#L11
+        // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
         core.info('📩 Setting Outputs')
         core.setOutput('sha', sha)
 
@@ -76,8 +80,8 @@ import { Api } from './api.js'
 /**
  * Add Summary
  * @param {Inputs} inputs
- * @param {String} result
- * @param {String} sha
+ * @param {string} result
+ * @param {string} sha
  * @return {Promise<void>}
  */
 async function addSummary(inputs, result, sha) {
@@ -102,10 +106,10 @@ async function addSummary(inputs, result, sha) {
 
 /**
  * Get Inputs
- * @typedef {Object} Inputs
- * @property {String} tag
- * @property {Boolean} summary
- * @property {String} token
+ * @typedef {object} Inputs
+ * @property {string} tag
+ * @property {boolean} summary
+ * @property {string} token
  * @return {Inputs}
  */
 function getInputs() {

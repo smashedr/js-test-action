@@ -1,5 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
+import nodeResolve from '@rollup/plugin-node-resolve'
 
 // noinspection JSUnusedGlobalSymbols
 export default {
@@ -8,5 +8,5 @@ export default {
         file: 'dist/index.js',
         format: 'esm',
     },
-    plugins: [commonjs(), nodeResolve()],
+    plugins: [commonjs(), nodeResolve({ preferBuiltins: true })],
 }
