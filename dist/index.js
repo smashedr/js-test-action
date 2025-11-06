@@ -1,35 +1,34 @@
-'use strict';
-
-var require$$0$a = require('node:path');
-var require$$0 = require('os');
-var require$$0$1 = require('crypto');
-var require$$1 = require('fs');
-var require$$1$5 = require('path');
-var require$$2$1 = require('http');
-var require$$3$1 = require('https');
-var require$$0$4 = require('net');
-var require$$1$1 = require('tls');
-var require$$4$1 = require('events');
-var require$$0$3 = require('assert');
-var require$$0$2 = require('util');
-var require$$0$5 = require('stream');
-var require$$7 = require('buffer');
-var require$$8 = require('querystring');
-var require$$14 = require('stream/web');
-var require$$0$7 = require('node:stream');
-var require$$1$2 = require('node:util');
-var require$$0$6 = require('node:events');
-var require$$0$8 = require('worker_threads');
-var require$$2$2 = require('perf_hooks');
-var require$$5 = require('util/types');
-var require$$4$2 = require('async_hooks');
-var require$$1$3 = require('console');
-var require$$1$4 = require('url');
-var require$$3$2 = require('zlib');
-var require$$6 = require('string_decoder');
-var require$$0$9 = require('diagnostics_channel');
-var require$$2$3 = require('child_process');
-var require$$6$1 = require('timers');
+import path from 'node:path';
+import require$$0 from 'os';
+import require$$0$1 from 'crypto';
+import require$$1 from 'fs';
+import require$$1$5 from 'path';
+import require$$2$1 from 'http';
+import require$$3$1 from 'https';
+import require$$0$4 from 'net';
+import require$$1$1 from 'tls';
+import require$$4$1 from 'events';
+import require$$0$3 from 'assert';
+import require$$0$2 from 'util';
+import require$$0$5 from 'stream';
+import require$$7 from 'buffer';
+import require$$8 from 'querystring';
+import require$$14 from 'stream/web';
+import require$$0$7 from 'node:stream';
+import require$$1$2 from 'node:util';
+import require$$0$6 from 'node:events';
+import require$$0$8 from 'worker_threads';
+import require$$2$2 from 'perf_hooks';
+import require$$5 from 'util/types';
+import require$$4$2 from 'async_hooks';
+import require$$1$3 from 'console';
+import require$$1$4 from 'url';
+import require$$3$2 from 'zlib';
+import require$$6 from 'string_decoder';
+import require$$0$9 from 'diagnostics_channel';
+import require$$2$3 from 'child_process';
+import require$$6$1 from 'timers';
+import { fileURLToPath } from 'node:url';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -65,8 +64,6 @@ function getAugmentedNamespace(n) {
 	});
 	return a;
 }
-
-var src = {};
 
 var core = {};
 
@@ -1756,7 +1753,7 @@ function requireTimers () {
 	return timers;
 }
 
-var main = {exports: {}};
+var main$1 = {exports: {}};
 
 var sbmh;
 var hasRequiredSbmh;
@@ -3294,7 +3291,7 @@ function requireUrlencoded () {
 var hasRequiredMain;
 
 function requireMain () {
-	if (hasRequiredMain) return main.exports;
+	if (hasRequiredMain) return main$1.exports;
 	hasRequiredMain = 1;
 
 	const WritableStream = require$$0$7.Writable;
@@ -3375,12 +3372,12 @@ function requireMain () {
 	  this._parser.write(chunk, cb);
 	};
 
-	main.exports = Busboy;
-	main.exports.default = Busboy;
-	main.exports.Busboy = Busboy;
+	main$1.exports = Busboy;
+	main$1.exports.default = Busboy;
+	main$1.exports.Busboy = Busboy;
 
-	main.exports.Dicer = Dicer;
-	return main.exports;
+	main$1.exports.Dicer = Dicer;
+	return main$1.exports;
 }
 
 var constants$3;
@@ -11976,7 +11973,7 @@ function requireAgent () {
 	return agent;
 }
 
-var api$1 = {};
+var api = {};
 
 var apiRequest = {exports: {}};
 
@@ -13323,18 +13320,18 @@ function requireApiConnect () {
 	return apiConnect;
 }
 
-var hasRequiredApi$1;
+var hasRequiredApi;
 
-function requireApi$1 () {
-	if (hasRequiredApi$1) return api$1;
-	hasRequiredApi$1 = 1;
+function requireApi () {
+	if (hasRequiredApi) return api;
+	hasRequiredApi = 1;
 
-	api$1.request = requireApiRequest();
-	api$1.stream = requireApiStream();
-	api$1.pipeline = requireApiPipeline();
-	api$1.upgrade = requireApiUpgrade();
-	api$1.connect = requireApiConnect();
-	return api$1;
+	api.request = requireApiRequest();
+	api.stream = requireApiStream();
+	api.pipeline = requireApiPipeline();
+	api.upgrade = requireApiUpgrade();
+	api.connect = requireApiConnect();
+	return api;
 }
 
 var mockErrors;
@@ -24225,7 +24222,7 @@ function requireUndici () {
 	const Agent = requireAgent();
 	const util = requireUtil$6();
 	const { InvalidArgumentError } = errors;
-	const api = requireApi$1();
+	const api = requireApi();
 	const buildConnector = requireConnect();
 	const MockClient = requireMockClient();
 	const MockAgent = requireMockAgent();
@@ -27281,6 +27278,8 @@ function requireCore () {
 	} (core));
 	return core;
 }
+
+var coreExports = requireCore();
 
 var github = {};
 
@@ -31242,217 +31241,202 @@ function requireGithub () {
 	return github;
 }
 
-var api;
-var hasRequiredApi;
+var githubExports = requireGithub();
 
-function requireApi () {
-	if (hasRequiredApi) return api;
-	hasRequiredApi = 1;
-	const github = requireGithub();
+class Api {
+    /**
+     * GitHub Octokit Api
+     * https://octokit.github.io/rest.js/
+     * @param {string} token
+     */
+    constructor(token) {
+        this.repo = githubExports.context.repo;
+        this.octokit = githubExports.getOctokit(token);
+    }
 
-	class Api {
-	    /**
-	     * GitHub Octokit Api
-	     * https://octokit.github.io/rest.js/
-	     * @param {string} token
-	     */
-	    constructor(token) {
-	        this.repo = github.context.repo;
-	        this.octokit = github.getOctokit(token);
-	    }
+    /**
+     * Get Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#get-a-reference
+     * @param {string} tag
+     * @return {Promise<object|undefined>}
+     */
+    async getRef(tag) {
+        console.debug(`getRef: tags/${tag}`);
+        try {
+            const result = await this.octokit.rest.git.getRef({
+                ...this.repo,
+                ref: `tags/${tag}`,
+            });
+            return result.data
+        } catch (e) {
+            if (e.status === 404) {
+                return
+            }
+            throw new Error(e)
+        }
+    }
 
-	    /**
-	     * Get Ref
-	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#get-a-reference
-	     * @param {string} tag
-	     * @return {Promise<object|undefined>}
-	     */
-	    async getRef(tag) {
-	        console.debug(`getRef: tags/${tag}`);
-	        try {
-	            const result = await this.octokit.rest.git.getRef({
-	                ...this.repo,
-	                ref: `tags/${tag}`,
-	            });
-	            return result.data
-	        } catch (e) {
-	            if (e.status === 404) {
-	                return
-	            }
-	            throw new Error(e)
-	        }
-	    }
+    /**
+     * Create Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#create-a-reference
+     * @param {string} tag
+     * @param {string} sha
+     * @return {Promise<object>}
+     */
+    async createRef(tag, sha) {
+        console.debug(`createRef: refs/tags/${tag}`, sha);
+        return this.octokit.rest.git.createRef({
+            ...this.repo,
+            ref: `refs/tags/${tag}`,
+            sha,
+        })
+    }
 
-	    /**
-	     * Create Ref
-	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#create-a-reference
-	     * @param {string} tag
-	     * @param {string} sha
-	     * @return {Promise<object>}
-	     */
-	    async createRef(tag, sha) {
-	        console.debug(`createRef: refs/tags/${tag}`, sha);
-	        return this.octokit.rest.git.createRef({
-	            ...this.repo,
-	            ref: `refs/tags/${tag}`,
-	            sha,
-	        })
-	    }
-
-	    /**
-	     * Update Ref
-	     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#update-a-reference
-	     * @param {string} tag
-	     * @param {string} sha
-	     * @param {boolean} [force]
-	     * @return {Promise<object>}
-	     */
-	    async updateRef(tag, sha, force = false) {
-	        console.debug(`updateRef: tags/${tag}`, sha, force);
-	        return this.octokit.rest.git.updateRef({
-	            ...this.repo,
-	            ref: `tags/${tag}`,
-	            sha,
-	            force,
-	        })
-	    }
-	}
-
-	api = Api;
-	return api;
+    /**
+     * Update Ref
+     * https://docs.github.com/en/rest/git/refs?apiVersion=2022-11-28#update-a-reference
+     * @param {string} tag
+     * @param {string} sha
+     * @param {boolean} [force]
+     * @return {Promise<object>}
+     */
+    async updateRef(tag, sha, force = false) {
+        console.debug(`updateRef: tags/${tag}`, sha, force);
+        return this.octokit.rest.git.updateRef({
+            ...this.repo,
+            ref: `tags/${tag}`,
+            sha,
+            force,
+        })
+    }
 }
 
-var hasRequiredSrc;
+async function main() {
+    coreExports.info(`🏳️ Starting JavaScript Test Action`);
 
-function requireSrc () {
-	if (hasRequiredSrc) return src;
-	hasRequiredSrc = 1;
-	const path = require$$0$a;
+    // Debug
+    coreExports.startGroup('Debug: github.context');
+    console.log(githubExports.context);
+    coreExports.endGroup(); // Debug github.context
+    coreExports.startGroup('Debug: process.env');
+    console.log(process.env);
+    coreExports.endGroup(); // Debug process.env
 
-	const core = requireCore();
-	const github = requireGithub();
+    // Path
+    const __filename = fileURLToPath(import.meta.url);
+    console.log(`__filename: ${__filename}`);
+    const __dirname = path.dirname(__filename);
+    console.log(`__dirname: ${__dirname}`);
+    const src = path.resolve(__dirname, '../src');
+    console.log(`src: ${src}`);
 
-	const Api = requireApi()
+    // Inputs
+    const inputs = getInputs();
+    coreExports.startGroup('Inputs');
+    console.log(inputs);
+    coreExports.endGroup(); // Inputs
 
-	;(async () => {
-	    try {
-	        core.info(`🏳️ Starting JavaScript Test Action`);
+    // Variables
+    const api = new Api(inputs.token);
+    const sha = githubExports.context.sha;
+    coreExports.info(`Target sha: \u001b[33;1m${sha}`);
 
-	        // Debug
-	        core.startGroup('Debug: github.context');
-	        console.log(github.context);
-	        core.endGroup(); // Debug github.context
-	        core.startGroup('Debug: process.env');
-	        console.log(process.env);
-	        core.endGroup(); // Debug process.env
+    // Processing
+    coreExports.startGroup(`Processing tag: "${inputs.tag}"`);
+    let result;
+    const reference = await api.getRef(inputs.tag);
+    console.log('reference:', reference);
+    if (reference) {
+        coreExports.info(`current sha: ${reference.object.sha}`);
+        if (sha === reference.object.sha) {
+            coreExports.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`);
+            result = 'Not Changed';
+        } else {
+            coreExports.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`);
+            await api.updateRef(inputs.tag, sha, true);
+            result = 'Updated';
+        }
+    } else {
+        coreExports.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`);
+        await api.createRef(inputs.tag, sha);
+        result = 'Created';
+    }
+    coreExports.endGroup(); // Processing
 
-	        console.log(`__dirname: ${__dirname}`);
-	        const src = path.resolve(__dirname, '../src');
-	        console.log(`src: ${src}`);
+    // Outputs - JSON.stringify is applied to the output values
+    // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
+    coreExports.info('📩 Setting Outputs');
+    coreExports.setOutput('sha', sha);
 
-	        // Inputs
-	        const inputs = getInputs();
-	        core.startGroup('Inputs');
-	        console.log(inputs);
-	        core.endGroup(); // Inputs
+    // Summary
+    if (inputs.summary) {
+        coreExports.info('📝 Writing Job Summary');
+        try {
+            await addSummary(inputs, result, sha);
+        } catch (e) {
+            console.log(e);
+            coreExports.error(`Error writing Job Summary ${e.message}`);
+        }
+    }
 
-	        // Variables
-	        const api = new Api(inputs.token);
-	        const sha = github.context.sha;
-	        core.info(`Target sha: \u001b[33;1m${sha}`);
-
-	        // Processing
-	        core.startGroup(`Processing tag: "${inputs.tag}"`);
-	        let result;
-	        const reference = await api.getRef(inputs.tag);
-	        console.log('reference:', reference);
-	        if (reference) {
-	            core.info(`current sha: ${reference.object.sha}`);
-	            if (sha === reference.object.sha) {
-	                core.info(`\u001b[36mTag "${inputs.tag}" already points to: ${sha}`);
-	                result = 'Not Changed';
-	            } else {
-	                core.info(`\u001b[35mUpdating tag "${inputs.tag}" to: ${sha}`);
-	                await api.updateRef(inputs.tag, sha, true);
-	                result = 'Updated';
-	            }
-	        } else {
-	            core.info(`\u001b[33mCreating new tag "${inputs.tag}" to: ${sha}`);
-	            await api.createRef(inputs.tag, sha);
-	            result = 'Created';
-	        }
-	        core.endGroup(); // Processing
-
-	        // Outputs - JSON.stringify is applied to the output values
-	        // https://github.com/actions/toolkit/blob/main/packages/core/src/utils.ts#L11
-	        core.info('📩 Setting Outputs');
-	        core.setOutput('sha', sha);
-
-	        // Summary
-	        if (inputs.summary) {
-	            core.info('📝 Writing Job Summary');
-	            try {
-	                await addSummary(inputs, result, sha);
-	            } catch (e) {
-	                console.log(e);
-	                core.error(`Error writing Job Summary ${e.message}`);
-	            }
-	        }
-
-	        core.info(`✅ \u001b[32;1mFinished Success`);
-	    } catch (e) {
-	        core.debug(e);
-	        core.info(e.message);
-	        core.setFailed(e.message);
-	    }
-	})();
-
-	/**
-	 * Add Summary
-	 * @param {Inputs} inputs
-	 * @param {string} result
-	 * @param {string} sha
-	 * @return {Promise<void>}
-	 */
-	async function addSummary(inputs, result, sha) {
-	    core.summary.addRaw('## JavaScript Test Action\n');
-
-	    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${inputs.tag}`;
-	    core.summary.addRaw(`${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`);
-
-	    delete inputs.token;
-	    const yaml = Object.entries(inputs)
-	        .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
-	        .join('\n');
-	    core.summary.addRaw('<details><summary>Inputs</summary>');
-	    core.summary.addCodeBlock(yaml, 'yaml');
-	    core.summary.addRaw('</details>\n');
-
-	    const text = 'View Documentation, Report Issues or Request Features';
-	    const link = 'https://github.com/smashedr/js-test-action';
-	    core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`);
-	    await core.summary.write();
-	}
-
-	/**
-	 * Get Inputs
-	 * @typedef {object} Inputs
-	 * @property {string} tag
-	 * @property {boolean} summary
-	 * @property {string} token
-	 * @return {Inputs}
-	 */
-	function getInputs() {
-	    return {
-	        tag: core.getInput('tag', { required: true }),
-	        summary: core.getBooleanInput('summary'),
-	        token: core.getInput('token', { required: true }),
-	    }
-	}
-	return src;
+    coreExports.info(`✅ \u001b[32;1mFinished Success`);
 }
 
-var srcExports = requireSrc();
-var index = /*@__PURE__*/getDefaultExportFromCjs(srcExports);
+/**
+ * Add Summary
+ * @param {Inputs} inputs
+ * @param {string} result
+ * @param {string} sha
+ * @return {Promise<void>}
+ */
+async function addSummary(inputs, result, sha) {
+    coreExports.summary.addRaw('## JavaScript Test Action\n');
 
-module.exports = index;
+    const url = `https://github.com/${githubExports.context.payload.repository.full_name}/releases/tag/${inputs.tag}`;
+    coreExports.summary.addRaw(`${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`);
+
+    delete inputs.token;
+    const yaml = Object.entries(inputs)
+        .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
+        .join('\n');
+    coreExports.summary.addRaw('<details><summary>Inputs</summary>');
+    coreExports.summary.addCodeBlock(yaml, 'yaml');
+    coreExports.summary.addRaw('</details>\n');
+
+    const text = 'View Documentation, Report Issues or Request Features';
+    const link = 'https://github.com/smashedr/js-test-action';
+    coreExports.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`);
+    await coreExports.summary.write();
+}
+
+/**
+ * Get Inputs
+ * @typedef {object} Inputs
+ * @property {string} tag
+ * @property {boolean} summary
+ * @property {string} token
+ * @return {Inputs}
+ */
+function getInputs() {
+    return {
+        tag: coreExports.getInput('tag', { required: true }),
+        summary: coreExports.getBooleanInput('summary'),
+        token: coreExports.getInput('token', { required: true }),
+    }
+}
+
+// main()
+// await main()
+// main().catch((e) => {
+//     core.debug(e)
+//     core.info(e.message)
+//     core.setFailed(e.message)
+// })
+
+try {
+    await main();
+} catch (e) {
+    coreExports.debug(e);
+    coreExports.info(e.message);
+    coreExports.setFailed(e.message);
+}
