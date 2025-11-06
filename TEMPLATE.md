@@ -10,7 +10,7 @@ console.log('\u001b[32;1m Green')
 console.log('\u001b[31;1m Red')
 console.log('\u001b[30;1m Grey')
 
-console.log('\u001b[0m Reset')
+console.log('\u001b[0m RESET')
 ```
 
 ## Action Path
