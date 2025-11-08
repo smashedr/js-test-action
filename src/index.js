@@ -1,6 +1,7 @@
 const path = require('node:path')
 
 const core = require('@actions/core')
+const exec = require('@actions/exec')
 const github = require('@actions/github')
 
 const Api = require('./api.js')
@@ -17,8 +18,11 @@ async function main() {
     core.endGroup() // Debug process.env
 
     console.log(`__dirname: ${__dirname}`)
-    const src = path.resolve(__dirname, '../src')
-    console.log(`src: ${src}`)
+    const srcPath = path.resolve(__dirname, '../src')
+    console.log(`srcPath: ${srcPath}`)
+    core.startGroup('ls srcPath')
+    await exec.exec('ls', ['-lah', srcPath], { ignoreReturnCode: true })
+    core.endGroup() // ls srcPath
 
     // Inputs
     const inputs = getInputs()

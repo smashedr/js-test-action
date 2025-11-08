@@ -31330,6 +31330,7 @@ function requireSrc () {
 	const path = require$$0$a;
 
 	const core = requireCore();
+	const exec = requireExec();
 	const github = requireGithub();
 
 	const Api = requireApi();
@@ -31346,8 +31347,11 @@ function requireSrc () {
 	    core.endGroup(); // Debug process.env
 
 	    console.log(`__dirname: ${__dirname}`);
-	    const src = path.resolve(__dirname, '../src');
-	    console.log(`src: ${src}`);
+	    const srcPath = path.resolve(__dirname, '../src');
+	    console.log(`srcPath: ${srcPath}`);
+	    core.startGroup('ls srcPath');
+	    await exec.exec('ls', ['-lah', srcPath], { ignoreReturnCode: true });
+	    core.endGroup(); // ls srcPath
 
 	    // Inputs
 	    const inputs = getInputs();
