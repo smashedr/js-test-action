@@ -1,4 +1,5 @@
 const path = require('node:path')
+const { readFileSync } = require('node:fs')
 
 const core = require('@actions/core')
 const exec = require('@actions/exec')
@@ -16,6 +17,10 @@ async function main() {
     core.startGroup('Debug: process.env')
     console.log(process.env)
     core.endGroup() // Debug process.env
+    core.startGroup('Debug: event.json')
+    const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'))
+    console.log(event)
+    core.endGroup() // Debug event.json
 
     console.log(`__dirname: ${__dirname}`)
     const srcPath = path.resolve(__dirname, '../src')

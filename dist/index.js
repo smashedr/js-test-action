@@ -1,6 +1,7 @@
 'use strict';
 
 var require$$0$a = require('node:path');
+var require$$1$6 = require('node:fs');
 var require$$0 = require('os');
 var require$$0$1 = require('crypto');
 var require$$1 = require('fs');
@@ -31328,6 +31329,7 @@ function requireSrc () {
 	if (hasRequiredSrc) return src;
 	hasRequiredSrc = 1;
 	const path = require$$0$a;
+	const { readFileSync } = require$$1$6;
 
 	const core = requireCore();
 	const exec = requireExec();
@@ -31345,6 +31347,10 @@ function requireSrc () {
 	    core.startGroup('Debug: process.env');
 	    console.log(process.env);
 	    core.endGroup(); // Debug process.env
+	    core.startGroup('Debug: event.json');
+	    const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+	    console.log(event);
+	    core.endGroup(); // Debug event.json
 
 	    console.log(`__dirname: ${__dirname}`);
 	    const srcPath = path.resolve(__dirname, '../src');
