@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: "Update Tags"
         id: tags
-        uses: cssnr/update-version-tags-action@v1
+        uses: cssnr/update-version-tags-action@latest
         with:
           tags: "latest"
 
@@ -32,6 +32,7 @@ jobs:
         with:
           tags: ${{ steps.tags.outputs.tags }}
           location: tail
+          type: "actions"
 
       - name: "Package Changelog Action"
         continue-on-error: true
