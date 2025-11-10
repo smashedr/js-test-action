@@ -8,17 +8,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pull:
-    name: "Pull"
-    uses: cssnr/workflows/.github/workflows/pull.yaml@actions
-    permissions:
-      checks: write
-      issues: write
-      pull-requests: write
-
   labeler:
     name: "Labeler"
     uses: cssnr/workflows/.github/workflows/labeler.yaml@actions
     permissions:
       issues: write
+      pull-requests: write
+
+  actions-up:
+    name: "Actions Up"
+    uses: cssnr/workflows/.github/workflows/actions-up.yaml@actions
+    permissions:
+      pull-requests: write
+
+  npm-outdated:
+    name: "NPM Outdated"
+    uses: cssnr/workflows/.github/workflows/npm-outdated.yaml@actions
+    permissions:
       pull-requests: write
