@@ -17,4 +17,3 @@ jobs:
     uses: cssnr/workflows/.github/workflows/lint-actions.yaml@lint
     permissions:
       contents: read
-      pull-requests: write
