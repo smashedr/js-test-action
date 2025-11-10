@@ -15,3 +15,10 @@ jobs:
       checks: write
       issues: write
       pull-requests: write
+
+  labeler:
+    name: "Labeler"
+    uses: cssnr/workflows/.github/workflows/labeler.yaml@actions
+    permissions:
+      issues: write
+      pull-requests: write
