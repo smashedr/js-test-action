@@ -74,7 +74,7 @@ async function main() {
             await addSummary(inputs, result, sha)
         } catch (e) {
             console.log(e)
-            core.error(`Error writing Job Summary ${e.message}`)
+            core.error(`Error writing Job Summary: ${e.message}`)
         }
     }
 
