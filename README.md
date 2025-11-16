@@ -38,9 +38,9 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 - JavaScript: https://github.com/smashedr/javascript-action
 - TypeScript: https://github.com/smashedr/typescript-action
-- Dockerfile Python: https://github.com/smashedr/docker-py-action
-- Dockerfile Python UV: https://github.com/smashedr/docker-uv-action
-- Docker Image Python: https://github.com/smashedr/image-py-action
+- Dockerfile Python: https://github.com/smashedr/test-action-py
+- Dockerfile Python UV: https://github.com/smashedr/test-action-uv
+- Docker Image Python: https://github.com/smashedr/docker-test-action
 
 ## Inputs
 
