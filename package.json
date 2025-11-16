@@ -1,5 +1,5 @@
 {
-  "name": "js-test-action",
+  "name": "javascript-action",
   "private": true,
   "main": "dist/index.js",
   "scripts": {

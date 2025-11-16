@@ -60,6 +60,7 @@ jobs:
           tag: "test"
 
       - name: "Verify Outputs"
+        if: ${{ !github.event.act }}
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
           if [ -z '${{ steps.test.outputs.sha }}' ];then

@@ -1,6 +1,6 @@
-name: "JavaScript Test Action"
+name: "JavaScript Action"
 # Description must be less than 125 characters.
-description: "JavaScript Test Action"
+description: "JavaScript Action Template"
 author: "Shane"
 branding:
   icon: "type"

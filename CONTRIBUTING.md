@@ -52,10 +52,10 @@ A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/
 
 For other Action types, see:
 
-- JavaScript: https://github.com/smashedr/js-test-action
+- JavaScript: https://github.com/smashedr/javascript-action
 - TypeScript: https://github.com/smashedr/ts-test-action
 - Docker: https://github.com/smashedr/docker-test-action
-- Python: https://github.com/smashedr/py-test-action (DEPRECATED)
+- Python: https://github.com/smashedr/py-test-action
 
 The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
 

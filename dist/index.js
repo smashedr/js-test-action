@@ -31338,7 +31338,7 @@ function requireSrc () {
 	const Api = requireApi();
 
 	async function main() {
-	    core.info(`🏳️ Starting JavaScript Test Action`);
+	    core.info(`🏳️ Starting JavaScript Action`);
 
 	    // Debug
 	    core.startGroup('Debug: github.context');
@@ -31419,7 +31419,7 @@ function requireSrc () {
 	 * @return {Promise<void>}
 	 */
 	async function addSummary(inputs, result, sha) {
-	    core.summary.addRaw('## JavaScript Test Action\n');
+	    core.summary.addRaw('## JavaScript Action\n');
 
 	    const url = `https://github.com/${github.context.payload.repository.full_name}/releases/tag/${inputs.tag}`;
 	    core.summary.addRaw(`${result}: [${inputs.tag}](${url}) :arrow_right: \`${sha}\`\n`);
@@ -31433,7 +31433,7 @@ function requireSrc () {
 	    core.summary.addRaw('</details>\n');
 
 	    const text = 'View Documentation, Report Issues or Request Features';
-	    const link = 'https://github.com/smashedr/js-test-action';
+	    const link = 'https://github.com/smashedr/javascript-action';
 	    core.summary.addRaw(`\n[${text}](${link}?tab=readme-ov-file#readme)\n\n---`);
 	    await core.summary.write();
 	}

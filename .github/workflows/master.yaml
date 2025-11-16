@@ -44,7 +44,7 @@ jobs:
 
       - name: "Test Action"
         id: test
-        uses: smashedr/js-test-action@master # actions-up-ignore
+        uses: smashedr/javascript-action@master # actions-up-ignore
         with:
           summary: ${{ !github.event.act }}
           tag: "test"

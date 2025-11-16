@@ -1,25 +1,25 @@
-[![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/tags)
-[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases)
-[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/js-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/js-test-action/releases/latest)
-[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/js-test-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/js-test-action/blob/master/src)
-[![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmashedr%2Fjs-test-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/smashedr/js-test-action/blob/master/action.yml)
-[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/js-test-action/actions/workflows/release.yaml)
-[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/test.yaml?logo=cachet&label=test)](https://github.com/smashedr/js-test-action/actions/workflows/test.yaml)
-[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/js-test-action/lint.yaml?logo=cachet&label=lint)](https://github.com/smashedr/js-test-action/actions/workflows/lint.yaml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_js-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_js-test-action)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/js-test-action?logo=github&label=updated)](https://github.com/smashedr/js-test-action/pulse)
-[![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/js-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/js-test-action)
-[![GitHub Contributors](https://img.shields.io/github/contributors-anon/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/graphs/contributors)
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/js-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme)
-[![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/js-test-action?logo=htmx)](https://github.com/smashedr/js-test-action)
-[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/js-test-action?logo=github)](https://github.com/smashedr/js-test-action/discussions)
-[![GitHub Forks](https://img.shields.io/github/forks/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/forks)
-[![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/js-test-action?style=flat&logo=github)](https://github.com/smashedr/js-test-action/stargazers)
+[![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/tags)
+[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/releases)
+[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/javascript-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/releases/latest)
+[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/javascript-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/javascript-action/blob/master/src)
+[![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmashedr%2Fjavascript-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/smashedr/javascript-action/blob/master/action.yml)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/javascript-action/actions/workflows/release.yaml)
+[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/test.yaml?logo=cachet&label=test)](https://github.com/smashedr/javascript-action/actions/workflows/test.yaml)
+[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/lint.yaml?logo=cachet&label=lint)](https://github.com/smashedr/javascript-action/actions/workflows/lint.yaml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_javascript-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_javascript-action)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/javascript-action?logo=github&label=updated)](https://github.com/smashedr/javascript-action/pulse)
+[![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/javascript-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/javascript-action)
+[![GitHub Contributors](https://img.shields.io/github/contributors-anon/smashedr/javascript-action?logo=github)](https://github.com/smashedr/javascript-action/graphs/contributors)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/javascript-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/javascript-action?tab=readme-ov-file#readme)
+[![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/javascript-action?logo=htmx)](https://github.com/smashedr/javascript-action)
+[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/javascript-action?logo=github)](https://github.com/smashedr/javascript-action/discussions)
+[![GitHub Forks](https://img.shields.io/github/forks/smashedr/javascript-action?style=flat&logo=github)](https://github.com/smashedr/javascript-action/forks)
+[![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/javascript-action?style=flat&logo=github)](https://github.com/smashedr/javascript-action/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
-# JavaScript Test Action
+# JavaScript Action Template
 
 - [Inputs](#Inputs)
   - [Permissions](#Permissions)
@@ -30,16 +30,16 @@
 - [Contributing](#Contributing)
 - [Development](#Development)
 
-JavaScript Test Action Template.
+JavaScript Action Template.
 
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
 
 This includes inputs, outputs, job summary, and automatic token authentication.
 
-- JavaScript: https://github.com/smashedr/js-test-action
+- JavaScript: https://github.com/smashedr/javascript-action
 - TypeScript: https://github.com/smashedr/ts-test-action
-- Docker: https://github.com/smashedr/docker-test-action
 - Python: https://github.com/smashedr/py-test-action
+- Docker PY: https://github.com/smashedr/docker-test-action
 
 ## Inputs
 
@@ -53,7 +53,7 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ---
 
-Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
+Updated: [test](https://github.com/smashedr/javascript-action/releases/tag/test) :arrow_right: `6470ef53102d5229672433f1adb6afa42e7b64d9`
 
 <details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>test</td></tr><tr><td>summary</td><td>true</td></tr></table></details>
 
@@ -64,15 +64,15 @@ Updated: [test](https://github.com/smashedr/js-test-action/releases/tag/test) :a
 With no inputs this will create/update the tag `test`.
 
 ```yaml
-- name: 'JavaScript Test Action'
-  uses: smashedr/js-test-action@master
+- name: 'JavaScript Action'
+  uses: smashedr/javascript-action@master
 ```
 
 With all inputs.
 
 ```yaml
-- name: 'JavaScript Test Action'
-  uses: smashedr/js-test-action@master
+- name: 'JavaScript Action'
+  uses: smashedr/javascript-action@master
   with:
     tag: test
     summary: true
@@ -97,9 +97,9 @@ Permissions documentation for [Workflows](https://docs.github.com/en/actions/wri
 | sha    | Tag Hash    |
 
 ```yaml
-- name: 'JavaScript Test Action'
+- name: 'JavaScript Action'
   id: test
-  uses: smashedr/js-test-action@master
+  uses: smashedr/javascript-action@master
 
 - name: 'Echo Output'
   run: |
@@ -129,9 +129,9 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
 
-      - name: 'JavaScript Test Action'
+      - name: 'JavaScript Action'
         id: test
-        uses: smashedr/js-test-action@master
+        uses: smashedr/javascript-action@master
 
       - name: 'Echo Outputs'
         run: |
@@ -139,19 +139,19 @@ jobs:
 ```
 
 For more examples, you can check out other projects using this action:  
-https://github.com/smashedr/js-test-action/network/dependents
+https://github.com/smashedr/javascript-action/network/dependents
 
 ## Tags
 
-The following rolling [tags](https://github.com/smashedr/js-test-action/tags) are maintained.
+The following rolling [tags](https://github.com/smashedr/javascript-action/tags) are maintained.
 
-| Version&nbsp;Tag                                                                                                                                                                                                   | Rolling | Bugs | Feat. |   Name    |  Target  | Example  |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :-------: | :------: | :------- |
-| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ✅   | **Major** | `vN.x.x` | `vN`     |
-| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/js-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/js-test-action/releases/latest) |   ✅    |  ✅  |  ❌   | **Minor** | `vN.N.x` | `vN.N`   |
-| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/js-test-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/js-test-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | **Micro** | `vN.N.N` | `vN.N.N` |
+| Version&nbsp;Tag                                                                                                                                                                                                         | Rolling | Bugs | Feat. |   Name    |  Target  | Example  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :-------: | :------: | :------- |
+| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/javascript-action/releases/latest) |   ✅    |  ✅  |  ✅   | **Major** | `vN.x.x` | `vN`     |
+| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/javascript-action/releases/latest) |   ✅    |  ✅  |  ❌   | **Minor** | `vN.N.x` | `vN.N`   |
+| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/javascript-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/javascript-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | **Micro** | `vN.N.N` | `vN.N.N` |
 
-You can view the release notes for each version on the [releases](https://github.com/smashedr/js-test-action/releases) page.
+You can view the release notes for each version on the [releases](https://github.com/smashedr/javascript-action/releases) page.
 
 The **Major** tag is recommended. It is the most up-to-date and always backwards compatible.
 Breaking changes would result in a **Major** version bump. At a minimum you should use a **Minor** tag.
@@ -160,12 +160,12 @@ Breaking changes would result in a **Major** version bump. At a minimum you shou
 
 For general help or to request a feature, see:
 
-- Q&A Discussion: https://github.com/smashedr/js-test-action/discussions/categories/q-a
-- Request a Feature: https://github.com/smashedr/js-test-action/discussions/categories/feature-requests
+- Q&A Discussion: https://github.com/smashedr/javascript-action/discussions/categories/q-a
+- Request a Feature: https://github.com/smashedr/javascript-action/discussions/categories/feature-requests
 
 If you are experiencing an issue/bug or getting unexpected results, you can:
 
-- Report an Issue: https://github.com/smashedr/js-test-action/issues
+- Report an Issue: https://github.com/smashedr/javascript-action/issues
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
 - Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Update%20Release%20Notes)
 
@@ -223,7 +223,7 @@ These actions are not published on the Marketplace, but may be useful.
 
 These are basic action templates that I use for creating new actions.
 
-- [js-test-action](https://github.com/smashedr/js-test-action?tab=readme-ov-file#readme) - JavaScript
+- [javascript-action](https://github.com/smashedr/javascript-action?tab=readme-ov-file#readme) - JavaScript
 - [ts-test-action](https://github.com/smashedr/ts-test-action?tab=readme-ov-file#readme) - TypeScript
 - [py-test-action](https://github.com/smashedr/py-test-action?tab=readme-ov-file#readme) - Python (Dockerfile)
 - [docker-test-action](https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme) - Docker (Image)
