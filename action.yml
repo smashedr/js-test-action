@@ -1,3 +1,4 @@
+# https://www.schemastore.org/github-action.json
 name: "JavaScript Action"
 # Description must be less than 125 characters.
 description: "JavaScript Action Template"
@@ -21,7 +22,6 @@ outputs:
   sha:
     description: "Tag Hash"
 
-# https://www.schemastore.org/github-action.json
 runs:
   using: "node24"
   main: "dist/index.js"

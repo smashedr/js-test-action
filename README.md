@@ -37,9 +37,10 @@ This action creates or updates the provided `tag` to the `sha` has that triggere
 This includes inputs, outputs, job summary, and automatic token authentication.
 
 - JavaScript: https://github.com/smashedr/javascript-action
-- TypeScript: https://github.com/smashedr/ts-test-action
-- Python: https://github.com/smashedr/py-test-action
-- Docker PY: https://github.com/smashedr/docker-test-action
+- TypeScript: https://github.com/smashedr/typescript-action
+- Dockerfile Python: https://github.com/smashedr/docker-py-action
+- Dockerfile Python UV: https://github.com/smashedr/docker-uv-action
+- Docker Image Python: https://github.com/smashedr/image-py-action
 
 ## Inputs
 
