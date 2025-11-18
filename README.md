@@ -1,8 +1,8 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/tags)
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/javascript-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/releases)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/javascript-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/javascript-action/releases/latest)
-[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/javascript-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/javascript-action/blob/master/src)
 [![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsmashedr%2Fjavascript-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/smashedr/javascript-action/blob/master/action.yml)
+[![GitHub Dist Size](https://img.shields.io/github/size/smashedr/javascript-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/smashedr/javascript-action/blob/master/src)
 [![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/javascript-action/actions/workflows/release.yaml)
 [![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/test.yaml?logo=cachet&label=test)](https://github.com/smashedr/javascript-action/actions/workflows/test.yaml)
 [![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/javascript-action/lint.yaml?logo=cachet&label=lint)](https://github.com/smashedr/javascript-action/actions/workflows/lint.yaml)
@@ -184,7 +184,7 @@ and [additional](https://cssnr.com/) open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
-Additionally, you can support other GitHub Actions I have published:
+Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/) I have published:
 
 - [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
 - [Portainer Stack Deploy Action](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
